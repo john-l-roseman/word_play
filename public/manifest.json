@@ -1,0 +1,22 @@
+{
+  "name": "word-play.org - Foreign Language Game",
+  "short_name": "word-play",
+  "description": "Learn Russian through engaging phrase matching games",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/placeholder.svg?height=192&width=192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/placeholder.svg?height=512&width=512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
