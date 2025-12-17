@@ -1,49 +1,40 @@
-import { Header } from "@/components/header"
-
-export const metadata = {
-  title: "About - word-play.org",
-  description: "Learn about word-play.org",
-}
+import { Navigation } from "@/components/navigation"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <Header />
-
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="bg-white rounded-lg p-8 shadow-lg">
-          <p className="mb-4">
-            This app was constructed with no coding, using only the chatbot at{" "}
-            <a
-              href="https://vercel.com"
-              className="text-blue-600 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              https://vercel.com
-            </a>
-            .
-          </p>
-
-          <p className="mb-4">Here is the prompt that was used to create the app:</p>
-
-          <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
-            {`Find interesting modern English phrases up to 20 words each from these sources:
-- 20 from the Quran 
-- 20 from Bible
-- 20 from Talmud
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50">
+        <div className="mx-auto max-w-4xl px-4 py-12">
+          <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
+            <h1 className="text-3xl font-bold text-slate-900 mb-6">About</h1>
+            <div className="prose prose-slate max-w-none">
+              <p>
+                This app was constructed with no coding, using only the chatbot at{" "}
+                <a href="https://vercel.com" className="text-indigo-600 hover:text-indigo-700">
+                  https://vercel.com
+                </a>
+                .
+              </p>
+              <p className="mt-4">Here is the prompt that was used to create the app:</p>
+              <pre className="mt-4 bg-slate-50 p-4 rounded-lg overflow-x-auto text-sm whitespace-pre-wrap">
+                {`Find interesting modern English phrases up to 20 words each from these sources:
+- 15 from the Quran 
+- 15 from Bible
+- 15 from Talmud
 - 5 from US Bill of Rights
 - 5 from US Declaration of Independence
 - 10 from Mao's Little Red Book
 - 10 from Confucius sayings
-- 5 from Karl Marx
-- 8 from Vladimir Lenin
+- 10 from Bhagavad Gita
+- 10 from Karl Marx
+- 10 from Vladimir Lenin
 - 5 from Albert Einstein
 - 20 humorous/clever observations
 - 10 from Shakespeare
 - 10 from Mark Twain
 - 5 from Winston Churchill
-- 5 from Oscar Wilde
+- 10 from Oscar Wilde
 Be sure to preserve commas in the phrases.
 
 
@@ -65,8 +56,8 @@ Layout & Design:
 Game Design:
 - Score display: Current Score, Streak (with fire emoji), and High Score
 - Source label below in small italic text (e.g., "—The Bible", "—Shakespeare") inside the same block as the English phrase.
-- Four French option cards below in a 2x2 grid
-- One French card is the correct translation, the 3 wrong answer cards should be all different. 
+- Four Russian option cards below in a 2x2 grid
+- One Russian card is the correct translation, the 3 wrong answer cards should be all different. 
 - Each of the three wrong answers is formed using the correct answer as a base:
 * Each wrong answer should have exactly one word from the correct answer that is replaced by a different word. The replacement word should match the part of speech of the original word: replace nouns with nouns and verbs with verbs. The replacement word should not be related in any way to the original word in the correct answer.
 * Don't replace the first word of the correct answer.
@@ -74,14 +65,18 @@ Game Design:
 * Besides the single word being replaced, the wrong answers should be identical to the correct answer.
 * Ensure that every wrong answer is different.
 * Add a button next to the "New Words" button called "Turn on tips". 
-* Systematically extract and translate every single individual word from the French blocks (correct and wrong choices).
-* Create a word-by-word translation dictionary of all words in the French choices using a comprehensive French-English dictionary..
+* Systematically extract and translate every single individual word from the Russian blocks (correct and wrong choices).
+* Create a word-by-word translation dictionary of all words in the Russian choices using a comprehensive Russian-English dictionary..
 * By default there are no tooltips.
-* After the "Turn on Tips" button is pushed, each individual French word in both correct and incorrect answers should have its own hover tooltip showing the English translation of that word. 
-* The French words with tooltips should look clean without any visible underline indication, but the tooltips will appear when you hover over each individual word.
+* After the "Turn on Tips" button is pushed, each individual Russian word in both correct and incorrect answers should have its own hover tooltip showing the English translation of that word. 
+* The Russian words with tooltips should look clean without any visible underline indication, but the tooltips will appear when you hover over each individual word.
 * Be sure that the translation tooltip corresponds to the word under the hover.
 * After the "Turn on Tips" button is pushed, the button disappears.  It reappears when the next phrase is displayed.
 * If the "Turn on Tips" button is pushed, reset streak to 0
+
+
+Add a button next to "Turn on Tips" called "Reset score".
+* Reset the High Score to zero
 
 
 Card styling:
@@ -96,9 +91,9 @@ Card styling:
 
 
 Play action:
-- Each round randomly selects 1 English phrase with 4 French cards (1 correct, 3 wrong)
-- The French phrases should be shuffled each time so the correct answer is in a random place.
-- Click a French option to submit answer
+- Each round randomly selects 1 English phrase with 4 Russian cards (1 correct, 3 wrong)
+- The Russian phrases should be shuffled each time so the correct answer is in a random place.
+- Click a Russian option to submit answer
 
 
 Audio Feedback:
@@ -145,13 +140,14 @@ Tech Stack:
 - /public/manifest.json with app metadata
 - /public/sw.js service worker caching all assets
 - Service worker registration in layout.tsx`}
-          </pre>
-
-          <p className="mt-4">
-            You can easily fork the project by editing the prompt, for example to modify the list of sources.
-          </p>
+              </pre>
+              <p className="mt-4">
+                You can easily fork the project by editing the prompt, for example to modify the list of sources.
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   )
 }

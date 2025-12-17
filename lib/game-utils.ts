@@ -1,3 +1,146 @@
+export function generateWrongAnswers(correctAnswer: string, translations: Record<string, string>): string[] {
+  const words = correctAnswer.split(" ")
+  const wrongAnswers: string[] = []
+
+  // List of Russian replacement words by part of speech
+  const replacements = {
+    nouns: [
+      "яблоко",
+      "стол",
+      "дом",
+      "окно",
+      "море",
+      "небо",
+      "лес",
+      "город",
+      "друг",
+      "враг",
+      "камень",
+      "дерево",
+      "цветок",
+      "птица",
+      "рыба",
+      "звезда",
+      "луна",
+      "солнце",
+      "огонь",
+      "вода",
+      "земля",
+      "воздух",
+      "книга",
+      "дверь",
+      "стена",
+      "пол",
+      "крыша",
+      "мост",
+      "река",
+      "гора",
+    ],
+    verbs: [
+      "бежать",
+      "прыгать",
+      "плавать",
+      "летать",
+      "читать",
+      "писать",
+      "петь",
+      "танцевать",
+      "смеяться",
+      "плакать",
+      "спать",
+      "есть",
+      "пить",
+      "играть",
+      "работать",
+      "учиться",
+      "любить",
+      "ненавидеть",
+      "думать",
+      "говорить",
+      "слушать",
+      "видеть",
+      "слышать",
+      "чувствовать",
+      "ходить",
+      "стоять",
+      "сидеть",
+      "лежать",
+    ],
+    adjectives: [
+      "красный",
+      "синий",
+      "зеленый",
+      "желтый",
+      "черный",
+      "белый",
+      "большой",
+      "маленький",
+      "высокий",
+      "низкий",
+      "толстый",
+      "тонкий",
+      "старый",
+      "новый",
+      "горячий",
+      "холодный",
+      "быстрый",
+      "медленный",
+      "сильный",
+      "слабый",
+      "умный",
+      "глупый",
+      "добрый",
+      "злой",
+      "красивый",
+      "уродливый",
+    ],
+  }
+
+  // Try to generate 3 unique wrong answers
+  const usedIndices = new Set<number>()
+  const attempts = new Set<string>()
+
+  while (wrongAnswers.length < 3 && attempts.size < 50) {
+    let indexToReplace: number
+
+    // Don't replace the first word
+    do {
+      indexToReplace = Math.floor(Math.random() * (words.length - 1)) + 1
+    } while (usedIndices.has(indexToReplace) && usedIndices.size < words.length - 1)
+
+    const wordToReplace = words[indexToReplace]
+
+    // Get a random replacement word
+    const allReplacements = [...replacements.nouns, ...replacements.verbs, ...replacements.adjectives]
+    const replacement = allReplacements[Math.floor(Math.random() * allReplacements.length)]
+
+    // Make sure replacement is different from original
+    if (replacement !== wordToReplace) {
+      const wrongAnswer = [...words]
+      wrongAnswer[indexToReplace] = replacement
+      const wrongAnswerStr = wrongAnswer.join(" ")
+
+      // Check if this wrong answer is unique
+      if (!wrongAnswers.includes(wrongAnswerStr) && wrongAnswerStr !== correctAnswer) {
+        wrongAnswers.push(wrongAnswerStr)
+        usedIndices.add(indexToReplace)
+      }
+    }
+
+    attempts.add(`${indexToReplace}-${replacement}`)
+  }
+
+  // If we couldn't generate 3 unique answers, fill with simpler variations
+  while (wrongAnswers.length < 3) {
+    const indexToReplace = ((wrongAnswers.length + 1) % (words.length - 1)) + 1
+    const wrongAnswer = [...words]
+    wrongAnswer[indexToReplace] = replacements.nouns[wrongAnswers.length]
+    wrongAnswers.push(wrongAnswer.join(" "))
+  }
+
+  return wrongAnswers
+}
+
 export function shuffleArray<T>(array: T[]): T[] {
   const newArray = [...array]
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -7,197 +150,46 @@ export function shuffleArray<T>(array: T[]): T[] {
   return newArray
 }
 
-export function generateWrongAnswers(
-  correctAnswer: string,
-  wordTranslations: { [key: string]: string },
-): { text: string; wordTranslations: { [key: string]: string } }[] {
-  const words = correctAnswer.split(/\s+/)
-  const wrongAnswers: { text: string; wordTranslations: { [key: string]: string } }[] = []
+export function playSuccessSound() {
+  if (typeof window === "undefined") return
 
-  // Common French words for replacements
-  const nounReplacements = [
-    "chat",
-    "chien",
-    "arbre",
-    "maison",
-    "voiture",
-    "livre",
-    "jour",
-    "nuit",
-    "fleur",
-    "pierre",
-    "eau",
-    "feu",
-    "vent",
-    "soleil",
-    "lune",
-    "étoile",
-    "mer",
-    "montagne",
-    "rivière",
-    "forêt",
-  ]
-  const verbReplacements = [
-    "mange",
-    "court",
-    "danse",
-    "chante",
-    "saute",
-    "parle",
-    "écoute",
-    "regarde",
-    "touche",
-    "sent",
-    "goûte",
-    "pense",
-    "rêve",
-    "dort",
-    "marche",
-    "vole",
-    "nage",
-    "grimpe",
-    "tombe",
-    "pousse",
-  ]
-  const adjectiveReplacements = [
-    "grand",
-    "petit",
-    "beau",
-    "laid",
-    "rapide",
-    "lent",
-    "fort",
-    "faible",
-    "chaud",
-    "froid",
-    "doux",
-    "dur",
-    "clair",
-    "sombre",
-    "jeune",
-    "vieux",
-    "nouveau",
-    "ancien",
-    "bon",
-    "mauvais",
-  ]
+  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
 
-  const usedPositions = new Set<number>()
+  // Play two-tone chime (523Hz + 659Hz)
+  ;[523, 659].forEach((freq, index) => {
+    const oscillator = audioContext.createOscillator()
+    const gainNode = audioContext.createGain()
 
-  for (let i = 0; i < 3; i++) {
-    // Try to find a position we haven't used yet (skip the first word)
-    let position = -1
-    let attempts = 0
-    while ((position === -1 || usedPositions.has(position)) && attempts < 50) {
-      position = Math.floor(Math.random() * (words.length - 1)) + 1 // Start from index 1 to skip first word
-      attempts++
-    }
+    oscillator.connect(gainNode)
+    gainNode.connect(audioContext.destination)
 
-    if (attempts >= 50) {
-      position = (i + 1) % words.length
-      if (position === 0) position = 1
-    }
+    oscillator.frequency.value = freq
+    oscillator.type = "sine"
 
-    usedPositions.add(position)
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2)
 
-    const originalWord = words[position]
-    const cleanOriginal = originalWord.toLowerCase().replace(/[.,!?;:]/g, "")
-
-    // Determine word type and get replacement
-    let replacement = ""
-    const allReplacements = [...nounReplacements, ...verbReplacements, ...adjectiveReplacements]
-
-    // Try to get a replacement that's different from the original
-    let maxAttempts = 20
-    while (maxAttempts > 0) {
-      const randomIndex = Math.floor(Math.random() * allReplacements.length)
-      replacement = allReplacements[randomIndex]
-      if (replacement !== cleanOriginal) break
-      maxAttempts--
-    }
-
-    // Preserve punctuation
-    const punctuation = originalWord.match(/[.,!?;:]$/)?.[0] || ""
-    const replacementWithPunctuation = replacement + punctuation
-
-    const newWords = [...words]
-    newWords[position] = replacementWithPunctuation
-
-    // Create word translations for this wrong answer
-    const newWordTranslations = { ...wordTranslations }
-    newWordTranslations[replacement] = getEnglishTranslation(replacement)
-
-    wrongAnswers.push({
-      text: newWords.join(" "),
-      wordTranslations: newWordTranslations,
-    })
-  }
-
-  return wrongAnswers
+    oscillator.start(audioContext.currentTime + index * 0.05)
+    oscillator.stop(audioContext.currentTime + 0.2 + index * 0.05)
+  })
 }
 
-function getEnglishTranslation(frenchWord: string): string {
-  const translations: { [key: string]: string } = {
-    chat: "cat",
-    chien: "dog",
-    arbre: "tree",
-    maison: "house",
-    voiture: "car",
-    livre: "book",
-    jour: "day",
-    nuit: "night",
-    fleur: "flower",
-    pierre: "stone",
-    eau: "water",
-    feu: "fire",
-    vent: "wind",
-    soleil: "sun",
-    lune: "moon",
-    étoile: "star",
-    mer: "sea",
-    montagne: "mountain",
-    rivière: "river",
-    forêt: "forest",
-    mange: "eats",
-    court: "runs",
-    danse: "dances",
-    chante: "sings",
-    saute: "jumps",
-    parle: "speaks",
-    écoute: "listens",
-    regarde: "watches",
-    touche: "touches",
-    sent: "smells",
-    goûte: "tastes",
-    pense: "thinks",
-    rêve: "dreams",
-    dort: "sleeps",
-    marche: "walks",
-    vole: "flies",
-    nage: "swims",
-    grimpe: "climbs",
-    tombe: "falls",
-    pousse: "pushes",
-    grand: "big",
-    petit: "small",
-    beau: "beautiful",
-    laid: "ugly",
-    rapide: "fast",
-    lent: "slow",
-    fort: "strong",
-    faible: "weak",
-    chaud: "hot",
-    froid: "cold",
-    doux: "soft",
-    dur: "hard",
-    clair: "bright",
-    sombre: "dark",
-    jeune: "young",
-    vieux: "old",
-    nouveau: "new",
-    ancien: "ancient",
-    bon: "good",
-    mauvais: "bad",
-  }
-  return translations[frenchWord] || frenchWord
+export function playErrorSound() {
+  if (typeof window === "undefined") return
+
+  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+  const oscillator = audioContext.createOscillator()
+  const gainNode = audioContext.createGain()
+
+  oscillator.connect(gainNode)
+  gainNode.connect(audioContext.destination)
+
+  oscillator.frequency.value = 200
+  oscillator.type = "sawtooth"
+
+  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3)
+
+  oscillator.start()
+  oscillator.stop(audioContext.currentTime + 0.3)
 }

@@ -1,19 +1,20 @@
 {
-  "name": "word-play.org",
-  "short_name": "WordPlay",
-  "description": "Open Source AI Language Learning Game",
+  "name": "word-play.org - Language Learning Game",
+  "short_name": "word-play",
+  "description": "Open Source AI Language Learning Game - More fun than Duolingo, and free forever",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

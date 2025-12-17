@@ -1,103 +1,84 @@
-import { Header } from "@/components/header"
-
-export const metadata = {
-  title: "Rules - word-play.org",
-  description: "Learn how to play word-play.org",
-}
+import { Navigation } from "@/components/navigation"
 
 export default function RulesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <Header />
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50">
+        <div className="mx-auto max-w-4xl px-4 py-12">
+          <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
+            <h1 className="text-3xl font-bold text-slate-900 mb-6">How to Play</h1>
+            <div className="prose prose-slate max-w-none">
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Game Objective</h2>
+              <p>
+                Match English phrases from famous texts with their correct Russian translations. Build your streak and
+                score points!
+              </p>
 
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="bg-white rounded-lg p-8 shadow-lg">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">How to Play</h2>
-
-          <div className="space-y-6 text-gray-700">
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Objective</h3>
-              <p>Match English phrases with their correct French translations to score points and build your streak!</p>
-            </section>
-
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Gameplay</h3>
-              <ul className="list-disc list-inside space-y-2">
-                <li>You'll see an English phrase with its source (Bible, Shakespeare, etc.)</li>
-                <li>Choose the correct French translation from 4 options</li>
-                <li>Click on the card you think is correct</li>
-              </ul>
-            </section>
-
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Scoring</h3>
-              <ul className="list-disc list-inside space-y-2">
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Scoring</h2>
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <strong>Correct Answer:</strong> +100 points base + 100 points per consecutive streak
                 </li>
                 <li>
-                  <strong>Streak Bonus:</strong> Each consecutive correct answer increases your streak
-                </li>
-                <li>
-                  <strong>Game Completion:</strong> +50 points for each remaining life (mistake not made)
+                  <strong>Wrong Answer:</strong> Streak resets to 0
                 </li>
                 <li>
                   <strong>High Score:</strong> Your best score is saved automatically
                 </li>
               </ul>
-            </section>
 
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Mistakes</h3>
-              <ul className="list-disc list-inside space-y-2">
-                <li>You have 4 lives (mistakes allowed)</li>
-                <li>Wrong answers reset your streak to 0</li>
-                <li>After 4 mistakes, the game ends</li>
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Gameplay</h2>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>Read the English phrase at the top</li>
+                <li>Click one of the four Russian translation cards</li>
+                <li>Correct answers turn green and auto-advance after 1.5 seconds</li>
+                <li>Wrong answers turn red, and the correct answer is shown in green</li>
                 <li>Click "Continue" after a wrong answer to proceed</li>
-              </ul>
-            </section>
+              </ol>
 
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Tips Feature</h3>
-              <ul className="list-disc list-inside space-y-2">
-                <li>Click "Turn on Tips" to enable word-by-word translations</li>
-                <li>Hover over any French word to see its English meaning</li>
-                <li>Using tips resets your streak to 0</li>
-                <li>The tips button reappears for each new phrase</li>
-              </ul>
-            </section>
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Tips Feature</h2>
+              <p>
+                Click "Turn on Tips" to see word-by-word English translations when you hover over Russian words. Note:
+                Using tips will reset your streak to 0.
+              </p>
 
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Buttons</h3>
-              <ul className="list-disc list-inside space-y-2">
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Buttons</h2>
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Restart:</strong> Start over with the same 8 phrases
+                  <strong>New Words:</strong> Load a new random phrase
                 </li>
                 <li>
-                  <strong>New Words:</strong> Get a fresh set of 8 random phrases
+                  <strong>Restart:</strong> Reload the current phrase
                 </li>
                 <li>
-                  <strong>Continue:</strong> Move to the next phrase after a wrong answer
+                  <strong>Turn on Tips:</strong> Enable hover tooltips for Russian words
+                </li>
+                <li>
+                  <strong>Reset Score:</strong> Reset your high score to 0
                 </li>
               </ul>
-            </section>
 
-            <section>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Phrase Sources</h3>
-              <p className="mb-2">Phrases come from diverse cultural and literary sources:</p>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Religious texts: Quran, Bible, Talmud</li>
-                <li>Historical documents: US Bill of Rights, Declaration of Independence</li>
-                <li>Political writings: Mao's Little Red Book, Marx, Lenin</li>
-                <li>Philosophy: Confucius sayings</li>
-                <li>Literature: Shakespeare, Mark Twain, Oscar Wilde</li>
-                <li>Notable figures: Winston Churchill, Albert Einstein</li>
-                <li>Humorous observations and clever sayings</li>
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Audio Feedback</h2>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Correct answers play a pleasant two-tone chime</li>
+                <li>Wrong answers play a short buzz sound</li>
               </ul>
-            </section>
+
+              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Phrase Sources</h2>
+              <p>Phrases come from diverse sources including:</p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Religious texts (Quran, Bible, Talmud, Bhagavad Gita)</li>
+                <li>Historical documents (US Bill of Rights, Declaration of Independence)</li>
+                <li>Famous authors (Shakespeare, Mark Twain, Oscar Wilde)</li>
+                <li>Philosophers and leaders (Confucius, Karl Marx, Vladimir Lenin)</li>
+                <li>Scientists (Albert Einstein)</li>
+                <li>Humorous observations</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   )
 }
