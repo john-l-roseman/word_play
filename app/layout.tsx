@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "word-play.org - Free Foreign Language Game",
-  description: "Learn Russian through engaging phrase matching games. Free open source language learning.",
+  title: "word-play.org - Open Source AI Language Learning Game",
+  description: "More fun than Duolingo, and free forever",
   generator: "v0.app",
   manifest: "/manifest.json",
   icons: {
@@ -39,11 +39,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2063007657687079"
-          crossOrigin="anonymous"
-        />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#3b82f6" />
       </head>
       <body className={`font-sans antialiased`}>
         {children}
@@ -51,14 +48,12 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').catch(function(err) {
-                    console.log('Service worker registration failed (this is expected in dev/preview):', err);
-                  });
-                });
-              }
-            `,
+            if ('serviceWorker' in navigator) {
+              window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+              });
+            }
+          `,
           }}
         />
       </body>

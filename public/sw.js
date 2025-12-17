@@ -1,31 +1,15 @@
 const CACHE_NAME = "word-play-v1"
-const urlsToCache = ["/", "/phrases.json", "/manifest.json"]
+const urlsToCache = ["/", "/about", "/rules"]
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
-      .catch(() => {
-        // Service worker installation failed silently
-      }),
-  )
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)))
 })
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches
-      .match(event.request)
-      .then((response) => {
-        if (response) {
-          return response
-        }
-        return fetch(event.request)
-      })
-      .catch(() => {
-        // Fetch failed, return from cache if available
-        return caches.match(event.request)
-      }),
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request)
+    }),
   )
 })
 
