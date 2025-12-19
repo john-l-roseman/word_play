@@ -1,84 +1,123 @@
-import { Navigation } from "@/components/navigation"
+import Link from "next/link"
 
-export default function RulesPage() {
+export default function Rules() {
   return (
-    <>
-      <Navigation />
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50">
-        <div className="mx-auto max-w-4xl px-4 py-12">
-          <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
-            <h1 className="text-3xl font-bold text-slate-900 mb-6">How to Play</h1>
-            <div className="prose prose-slate max-w-none">
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Game Objective</h2>
-              <p>
-                Match English phrases from famous texts with their correct Russian translations. Build your streak and
-                score points!
-              </p>
-
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Scoring</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Correct Answer:</strong> +100 points base + 100 points per consecutive streak
-                </li>
-                <li>
-                  <strong>Wrong Answer:</strong> Streak resets to 0
-                </li>
-                <li>
-                  <strong>High Score:</strong> Your best score is saved automatically
-                </li>
-              </ul>
-
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Gameplay</h2>
-              <ol className="list-decimal pl-6 space-y-2">
-                <li>Read the English phrase at the top</li>
-                <li>Click one of the four Russian translation cards</li>
-                <li>Correct answers turn green and auto-advance after 1.5 seconds</li>
-                <li>Wrong answers turn red, and the correct answer is shown in green</li>
-                <li>Click "Continue" after a wrong answer to proceed</li>
-              </ol>
-
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Tips Feature</h2>
-              <p>
-                Click "Turn on Tips" to see word-by-word English translations when you hover over Russian words. Note:
-                Using tips will reset your streak to 0.
-              </p>
-
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Buttons</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>New Words:</strong> Load a new random phrase
-                </li>
-                <li>
-                  <strong>Restart:</strong> Reload the current phrase
-                </li>
-                <li>
-                  <strong>Turn on Tips:</strong> Enable hover tooltips for Russian words
-                </li>
-                <li>
-                  <strong>Reset Score:</strong> Reset your high score to 0
-                </li>
-              </ul>
-
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Audio Feedback</h2>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Correct answers play a pleasant two-tone chime</li>
-                <li>Wrong answers play a short buzz sound</li>
-              </ul>
-
-              <h2 className="text-2xl font-semibold text-slate-800 mt-6">Phrase Sources</h2>
-              <p>Phrases come from diverse sources including:</p>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Religious texts (Quran, Bible, Talmud, Bhagavad Gita)</li>
-                <li>Historical documents (US Bill of Rights, Declaration of Independence)</li>
-                <li>Famous authors (Shakespeare, Mark Twain, Oscar Wilde)</li>
-                <li>Philosophers and leaders (Confucius, Karl Marx, Vladimir Lenin)</li>
-                <li>Scientists (Albert Einstein)</li>
-                <li>Humorous observations</li>
-              </ul>
-            </div>
-          </div>
+    <div className="min-h-screen bg-background">
+      <nav className="border-b border-border p-4">
+        <div className="max-w-6xl mx-auto flex gap-6 text-lg font-medium">
+          <Link href="/" className="hover:text-primary transition-colors">
+            Home
+          </Link>
+          <Link href="/about" className="hover:text-primary transition-colors">
+            About
+          </Link>
+          <Link href="/rules" className="hover:text-primary transition-colors">
+            Rules
+          </Link>
+          <Link href="/install" className="hover:text-primary transition-colors">
+            Install on Mobile
+          </Link>
         </div>
-      </div>
-    </>
+      </nav>
+
+      <main className="max-w-4xl mx-auto p-6">
+        <h1 className="text-4xl font-bold mb-8 text-balance">Game Rules</h1>
+
+        <div className="space-y-6 text-lg">
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Objective</h2>
+            <p>
+              Match English phrases from famous texts with their correct Russian translations. Build your streak and
+              achieve the highest score!
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">How to Play</h2>
+            <ol className="list-decimal list-inside space-y-2 ml-4">
+              <li>Read the English phrase displayed at the top</li>
+              <li>Choose the correct Russian translation from four options</li>
+              <li>Click on your answer to submit</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Scoring</h2>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>
+                <strong>Correct Answer:</strong> +100 points base + 100 points per consecutive streak
+              </li>
+              <li>
+                <strong>Streak Bonus:</strong> Each consecutive correct answer increases your streak multiplier
+              </li>
+              <li>
+                <strong>Game Completion Bonus:</strong> 50 points per remaining mistake when you finish all 8 phrases
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Mistakes</h2>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>You have 4 chances (mistakes allowed)</li>
+              <li>Wrong answer resets your streak to 0</li>
+              <li>Game ends when you reach 4 mistakes or complete all 8 phrases</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Game Features</h2>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>
+                <strong>Turn on Tips:</strong> Enables word-by-word translations for Russian text (resets streak to 0)
+              </li>
+              <li>
+                <strong>New Words:</strong> Loads a new set of 8 random phrases
+              </li>
+              <li>
+                <strong>Restart:</strong> Restarts the current set of 8 phrases
+              </li>
+              <li>
+                <strong>Reset Score:</strong> Clears your high score
+              </li>
+              <li>
+                <strong>High Score:</strong> Your best score is saved automatically
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Visual Feedback</h2>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>
+                <strong>Green card:</strong> Correct answer
+              </li>
+              <li>
+                <strong>Red card with shake:</strong> Wrong answer
+              </li>
+              <li>
+                <strong>Dark gray:</strong> Selected card before reveal
+              </li>
+              <li>
+                <strong>Audio cues:</strong> Pleasant chime for correct, buzz for incorrect
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Phrase Sources</h2>
+            <p>Phrases are selected from diverse sources including:</p>
+            <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
+              <li>Religious texts (Quran, Bible, Talmud, Bhagavad Gita)</li>
+              <li>Historical documents (US Bill of Rights, Declaration of Independence)</li>
+              <li>Philosophical works (Marx, Lenin, Confucius, Mao)</li>
+              <li>Literary classics (Shakespeare, Mark Twain, Oscar Wilde)</li>
+              <li>Famous thinkers (Einstein, Churchill)</li>
+              <li>Humorous observations</li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
   )
 }
