@@ -1,16 +1,16 @@
 import type React from "react"
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import { Navigation } from "@/components/navigation"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Language Learning Game",
-  description:
-    "Open Source AI Language Learning Game - Match English phrases with French translations from diverse sources",
+  title: "AI Language Learning Game",
+  description: "Learn languages by matching phrases - Built with v0 and Vercel",
   generator: "v0.app",
   manifest: "/manifest.json",
   icons: {
@@ -20,17 +20,14 @@ export const metadata: Metadata = {
         sizes: "192x192",
         type: "image/png",
       },
+      {
+        url: "/icon-512.jpg",
+        sizes: "512x512",
+        type: "image/png",
+      },
     ],
-    apple: "/icon-512.jpg",
+    apple: "/icon-192.jpg",
   },
-}
-
-export const viewport: Viewport = {
-  themeColor: "#78716c",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
 }
 
 export default function RootLayout({
@@ -40,7 +37,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`font-sans antialiased bg-stone-900 text-stone-100`}>
+        <Navigation />
         {children}
         <Analytics />
       </body>

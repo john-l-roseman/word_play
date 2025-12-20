@@ -1,0 +1,24 @@
+{
+  "name": "AI Language Learning Game",
+  "short_name": "Lang Game",
+  "description": "Learn languages by matching phrases",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#292524",
+  "theme_color": "#292524",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.jpg",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.jpg",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
