@@ -1,116 +1,140 @@
+import { MenuBar } from "@/components/menu-bar"
+import Link from "next/link"
+
 export default function AboutPage() {
   return (
-    <main className="min-h-screen py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-stone-100 mb-6">About This Project</h1>
+    <div className="min-h-screen bg-stone-100">
+      <MenuBar />
+      <main className="max-w-4xl mx-auto p-6 md:p-8">
+        <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
+          <h1 className="text-3xl font-bold text-stone-900 mb-6">{"About This Project"}</h1>
 
-        <div className="space-y-8 text-stone-300">
-          <section>
-            <h2 className="text-2xl font-semibold text-stone-100 mb-4">Built with Vercel & v0</h2>
-            <p className="mb-4">
-              This language learning game was created using{" "}
-              <a href="https://v0.app" className="text-blue-400 hover:underline font-semibold">
-                v0
-              </a>
-              , an AI-powered development tool by{" "}
-              <a href="https://vercel.com" className="text-blue-400 hover:underline font-semibold">
-                Vercel
-              </a>
-              . The entire application was generated through natural language prompts—no manual coding required.
-            </p>
-            <p>
-              Vercel is a cloud platform for deploying and hosting modern web applications, with built-in support for
-              Next.js, React, and other popular frameworks. v0 leverages AI to transform your ideas into
-              production-ready code instantly.
-            </p>
-          </section>
+          <div className="space-y-6 text-stone-700 leading-relaxed">
+            <section>
+              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Built with Vercel"}</h2>
+              <p>
+                {"This language learning game was created using "}
+                <a
+                  href="https://vercel.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-900 font-semibold hover:underline"
+                >
+                  {"Vercel"}
+                </a>
+                {
+                  ", a powerful platform that combines the best developer experience with a focus on end-user performance. Vercel provides seamless deployment, instant previews, and edge network delivery to ensure this app loads fast anywhere in the world."
+                }
+              </p>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-stone-100 mb-4">The Concept of "Vibe Coding"</h2>
-            <p className="mb-4">
-              This project demonstrates the power of <strong className="text-stone-100">"vibe coding"</strong>—
-              describing what you want to build in natural language and letting AI handle the implementation details.
-              Instead of writing thousands of lines of code, you simply describe the game mechanics, visual design, and
-              user experience you envision.
-            </p>
-            <p>The result is a fully functional Progressive Web App with:</p>
-            <ul className="list-disc list-inside space-y-2 ml-4 mt-3">
-              <li>Drag-and-drop interactions with touch support</li>
-              <li>Web Audio API-generated sound effects</li>
-              <li>Responsive design for mobile and desktop</li>
-              <li>Offline PWA capabilities</li>
-              <li>Persistent score tracking</li>
-              <li>Multi-page navigation</li>
-            </ul>
-          </section>
+            <section>
+              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"The Power of Vibe Coding"}</h2>
+              <p className="mb-4">
+                {
+                  'This entire application was constructed through "vibe coding" - a revolutionary approach where you describe what you want to build in natural language, and AI transforms your vision into working code. No traditional programming required!'
+                }
+              </p>
+              <p className="mb-4">
+                {"The concept of vibe coding represents a paradigm shift in software development:"}
+              </p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>{"Express your ideas in plain English instead of learning complex syntax"}</li>
+                <li>{"Iterate rapidly by refining your descriptions"}</li>
+                <li>{"Focus on creativity and problem-solving rather than implementation details"}</li>
+                <li>{"Lower the barrier to entry for creating sophisticated applications"}</li>
+              </ul>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-stone-100 mb-4">Learning Opportunity</h2>
-            <p className="mb-4">This open-source project serves as an excellent learning resource for:</p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                <strong className="text-stone-100">AI-Assisted Development:</strong> See how AI can transform ideas into
-                functional applications
-              </li>
-              <li>
-                <strong className="text-stone-100">Modern Web Technologies:</strong> Explore Next.js, React, TypeScript,
-                and Tailwind CSS
-              </li>
-              <li>
-                <strong className="text-stone-100">Progressive Web Apps:</strong> Understand PWA implementation with
-                offline support
-              </li>
-              <li>
-                <strong className="text-stone-100">Interactive UI/UX:</strong> Study drag-and-drop interactions,
-                animations, and audio feedback
-              </li>
-              <li>
-                <strong className="text-stone-100">Prompt Engineering:</strong> Learn how to effectively describe
-                complex features to AI
-              </li>
-            </ul>
-          </section>
+            <section>
+              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Learning Opportunity"}</h2>
+              <p className="mb-4">
+                {"This project serves as an excellent base for learning about AI-assisted development. You can:"}
+              </p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>{"Study the generated code to understand modern web development patterns"}</li>
+                <li>{"Experiment with modifying the prompt to create variations"}</li>
+                <li>{"Learn how AI interprets requirements and translates them into functional applications"}</li>
+                <li>{"Understand Progressive Web App (PWA) architecture"}</li>
+                <li>{"Explore React, Next.js, and modern JavaScript/TypeScript"}</li>
+              </ul>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-stone-100 mb-4">Fork & Customize</h2>
-            <p className="mb-4">
-              You can use this project as a foundation for your own language learning apps or similar interactive games.
-              Simply modify the prompt to:
-            </p>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>Change the phrase sources (add poetry, movie quotes, technical terms, etc.)</li>
-              <li>Support different language pairs (Spanish-German, Japanese-English, etc.)</li>
-              <li>Adjust the game mechanics (matching, fill-in-the-blank, multiple choice)</li>
-              <li>Modify the visual design and color scheme</li>
-              <li>Add new features like user accounts, leaderboards, or achievement systems</li>
-            </ul>
-            <p className="mt-4">
-              Visit the{" "}
-              <a href="/how-to-build" className="text-blue-400 hover:underline font-semibold">
-                How to Build
-              </a>{" "}
-              page to see the exact prompt used to create this application.
-            </p>
-          </section>
+            <section>
+              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Technology Stack"}</h2>
+              <p className="mb-2">{"This app leverages cutting-edge web technologies:"}</p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>
+                  <strong>{"Next.js 16"}</strong>
+                  {" - React framework with server components"}
+                </li>
+                <li>
+                  <strong>{"React 19"}</strong>
+                  {" - Modern UI library"}
+                </li>
+                <li>
+                  <strong>{"TypeScript"}</strong>
+                  {" - Type-safe JavaScript"}
+                </li>
+                <li>
+                  <strong>{"Tailwind CSS v4"}</strong>
+                  {" - Utility-first styling"}
+                </li>
+                <li>
+                  <strong>{"dnd-kit"}</strong>
+                  {" - Accessible drag-and-drop"}
+                </li>
+                <li>
+                  <strong>{"Web Audio API"}</strong>
+                  {" - Browser-native sound generation"}
+                </li>
+                <li>
+                  <strong>{"PWA"}</strong>
+                  {" - Progressive Web App with offline support"}
+                </li>
+              </ul>
+            </section>
 
-          <section className="bg-stone-800 p-6 rounded-lg border border-stone-700">
-            <h3 className="text-xl font-semibold text-stone-100 mb-3">Get Started</h3>
-            <p className="mb-4">Ready to build your own AI-powered applications?</p>
-            <div className="space-y-2">
-              <a
-                href="https://v0.app"
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors"
-              >
-                Try v0 →
-              </a>
-              <br />
-              <a href="https://vercel.com" className="inline-block text-blue-400 hover:underline">
-                Learn more about Vercel →
-              </a>
-            </div>
-          </section>
+            <section>
+              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Open Source Philosophy"}</h2>
+              <p>
+                {"This game is open source in spirit - the prompt that created it is freely available (see "}
+                <Link href="/how-to-build" className="text-stone-900 font-semibold hover:underline">
+                  {"How to Build"}
+                </Link>
+                {
+                  "), allowing anyone to fork, modify, and create their own versions. You could easily adapt it for different languages, different phrase sources, or completely different educational content."
+                }
+              </p>
+            </section>
+
+            <section className="bg-stone-50 border-l-4 border-stone-600 p-4 rounded">
+              <h3 className="text-lg font-semibold text-stone-900 mb-2">{"Get Started"}</h3>
+              <p>
+                {"Ready to build your own AI-powered application? Visit "}
+                <a
+                  href="https://v0.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-900 font-semibold hover:underline"
+                >
+                  {"v0.dev"}
+                </a>
+                {" to start creating with natural language prompts, or explore "}
+                <a
+                  href="https://vercel.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-stone-900 font-semibold hover:underline"
+                >
+                  {"Vercel"}
+                </a>
+                {" to learn about deploying modern web applications."}
+              </p>
+            </section>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   )
 }

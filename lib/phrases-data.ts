@@ -1,827 +1,721 @@
-export interface Phrase {
-  english: string
-  french: string
-  source: string
-}
+export const phrases = [
+  { phrase: "Be kind.", source: "Talmud", french: "Sois gentil." },
+  { phrase: "To be or not to be.", source: "Shakespeare", french: "Être ou ne pas être." },
+  {
+    phrase: "All men are created equal.",
+    source: "Declaration of Independence",
+    french: "Tous les hommes sont créés égaux.",
+  },
+  { phrase: "The truth will set you free.", source: "Bible", french: "La vérité vous rendra libres." },
+  {
+    phrase: "Workers of the world, unite!",
+    source: "Karl Marx",
+    french: "Prolétaires de tous les pays, unissez-vous!",
+  },
+  {
+    phrase: "God is subtle but not malicious.",
+    source: "Albert Einstein",
+    french: "Dieu est subtil mais pas malicieux.",
+  },
+  { phrase: "I think, therefore I am.", source: "Observation", french: "Je pense, donc je suis." },
+  { phrase: "Power corrupts absolutely.", source: "Observation", french: "Le pouvoir corrompt absolument." },
 
-export const phrasesData: Phrase[] = [
-  // Quran (15)
   {
-    english: "In the name of God, the Most Gracious, the Most Merciful.",
-    french: "Au nom de Dieu, le Tout Miséricordieux, le Très Miséricordieux.",
+    phrase: "In the name of God, most gracious, most merciful.",
     source: "Quran",
+    french: "Au nom de Dieu, le tout miséricordieux, le très miséricordieux.",
   },
+  { phrase: "Love your neighbor as yourself.", source: "Bible", french: "Tu aimeras ton prochain comme toi-même." },
   {
-    english: "This is the Book about which there is no doubt, a guidance for those conscious of God.",
-    french: "Ceci est le Livre au sujet duquel il n'y a aucun doute, c'est un guide pour les pieux.",
-    source: "Quran",
-  },
-  {
-    english: "And whoever saves one life, it is as if he had saved mankind entirely.",
-    french: "Et quiconque sauve une vie, c'est comme s'il avait sauvé l'humanité entière.",
-    source: "Quran",
-  },
-  {
-    english: "Indeed, with hardship comes ease.",
-    french: "En vérité, avec la difficulté vient la facilité.",
-    source: "Quran",
-  },
-  {
-    english: "God does not burden a soul beyond that it can bear.",
-    french: "Dieu n'impose à aucune âme une charge supérieure à sa capacité.",
-    source: "Quran",
-  },
-  {
-    english: "Verily, in the remembrance of God do hearts find rest.",
-    french: "En vérité, c'est dans le souvenir de Dieu que les cœurs trouvent la paix.",
-    source: "Quran",
-  },
-  { english: "And speak to people good words.", french: "Et adressez aux gens de bonnes paroles.", source: "Quran" },
-  {
-    english: "The best among you are those who have the best manners and character.",
-    french: "Les meilleurs d'entre vous sont ceux qui ont les meilleures manières et le meilleur caractère.",
-    source: "Quran",
-  },
-  {
-    english: "Do not lose hope, nor be sad.",
-    french: "Ne perdez pas espoir et ne soyez pas tristes.",
-    source: "Quran",
-  },
-  {
-    english: "And He is with you wherever you are.",
-    french: "Et Il est avec vous où que vous soyez.",
-    source: "Quran",
-  },
-  {
-    english: "Indeed, God is the best of planners.",
-    french: "En vérité, Dieu est le meilleur des planificateurs.",
-    source: "Quran",
-  },
-  {
-    english: "So verily, with every difficulty, there is relief.",
-    french: "Alors en vérité, avec chaque difficulté, il y a un soulagement.",
-    source: "Quran",
-  },
-  { english: "And He found you lost and guided you.", french: "Et Il t'a trouvé égaré et t'a guidé.", source: "Quran" },
-  {
-    english: "God is sufficient for us, and He is the best disposer of affairs.",
-    french: "Dieu nous suffit et Il est le meilleur garant.",
-    source: "Quran",
-  },
-  { english: "My mercy encompasses all things.", french: "Ma miséricorde embrasse toute chose.", source: "Quran" },
-
-  // Bible (15)
-  {
-    english: "In the beginning, God created the heavens and the earth.",
-    french: "Au commencement, Dieu créa les cieux et la terre.",
+    phrase: "The path of the righteous is like light at dawn.",
     source: "Bible",
+    french: "Le sentier des justes est comme la lumière de l'aube.",
   },
   {
-    english: "Let there be light, and there was light.",
-    french: "Que la lumière soit, et la lumière fut.",
+    phrase: "Do unto others as you would have them do unto you.",
     source: "Bible",
-  },
-  { english: "Love your neighbor as yourself.", french: "Tu aimeras ton prochain comme toi-même.", source: "Bible" },
-  {
-    english: "Do unto others as you would have them do unto you.",
     french: "Fais aux autres ce que tu voudrais qu'ils te fassent.",
-    source: "Bible",
   },
-  { english: "The truth will set you free.", french: "La vérité vous rendra libres.", source: "Bible" },
+  { phrase: "Blessed are the peacemakers.", source: "Bible", french: "Heureux les artisans de paix." },
+  { phrase: "Ask and it will be given to you.", source: "Bible", french: "Demandez et l'on vous donnera." },
   {
-    english: "Blessed are the peacemakers, for they will be called children of God.",
-    french: "Heureux les artisans de paix, car ils seront appelés enfants de Dieu.",
+    phrase: "The fear of the Lord is the beginning of wisdom.",
     source: "Bible",
+    french: "La crainte du Seigneur est le commencement de la sagesse.",
   },
+  { phrase: "Let there be light.", source: "Bible", french: "Que la lumière soit." },
+  { phrase: "Man does not live by bread alone.", source: "Bible", french: "L'homme ne vit pas de pain seulement." },
+  { phrase: "The Lord is my shepherd.", source: "Bible", french: "Le Seigneur est mon berger." },
+
+  { phrase: "Speak good or remain silent.", source: "Quran", french: "Parle en bien ou garde le silence." },
   {
-    english: "Ask and it will be given to you; seek and you will find.",
-    french: "Demandez, et l'on vous donnera ; cherchez, et vous trouverez.",
-    source: "Bible",
+    phrase: "God does not burden a soul beyond its capacity.",
+    source: "Quran",
+    french: "Dieu n'impose à aucune âme une charge supérieure à sa capacité.",
   },
+  { phrase: "With hardship comes ease.", source: "Quran", french: "Avec la difficulté vient la facilité." },
+  { phrase: "Indeed, Allah is with the patient.", source: "Quran", french: "En vérité, Allah est avec les patients." },
   {
-    english: "For God so loved the world that he gave his only Son.",
-    french: "Car Dieu a tant aimé le monde qu'il a donné son Fils unique.",
-    source: "Bible",
-  },
-  { english: "Love is patient, love is kind.", french: "L'amour est patient, l'amour est bon.", source: "Bible" },
-  {
-    english: "Faith is the substance of things hoped for, the evidence of things not seen.",
-    french: "La foi est une ferme assurance des choses qu'on espère, une démonstration de celles qu'on ne voit pas.",
-    source: "Bible",
-  },
-  {
-    english: "I can do all things through Christ who strengthens me.",
-    french: "Je puis tout par celui qui me fortifie.",
-    source: "Bible",
-  },
-  { english: "Be still, and know that I am God.", french: "Arrêtez, et sachez que je suis Dieu.", source: "Bible" },
-  {
-    english: "The Lord is my shepherd; I shall not want.",
-    french: "L'Éternel est mon berger : je ne manquerai de rien.",
-    source: "Bible",
+    phrase: "The best of people are those most beneficial to others.",
+    source: "Quran",
+    french: "Les meilleurs des gens sont ceux qui sont les plus bénéfiques aux autres.",
   },
   {
-    english: "Greater love has no one than this: to lay down one's life for one's friends.",
-    french: "Il n'y a pas de plus grand amour que de donner sa vie pour ses amis.",
-    source: "Bible",
+    phrase: "Whoever saves one life, saves all of humanity.",
+    source: "Quran",
+    french: "Quiconque sauve une vie, sauve toute l'humanité.",
   },
   {
-    english: "Judge not, that you be not judged.",
-    french: "Ne jugez point, afin que vous ne soyez point jugés.",
-    source: "Bible",
+    phrase: "Take one step towards me, I will take ten towards you.",
+    source: "Quran",
+    french: "Fais un pas vers moi, j'en ferai dix vers toi.",
+  },
+  {
+    phrase: "Verily, remembrance of God brings peace to hearts.",
+    source: "Quran",
+    french: "En vérité, le souvenir de Dieu apporte la paix aux cœurs.",
+  },
+  { phrase: "Help one another in righteousness.", source: "Quran", french: "Entraidez-vous dans la piété." },
+  {
+    phrase: "The strong are not those who overcome others in wrestling.",
+    source: "Quran",
+    french: "Les forts ne sont pas ceux qui dominent les autres à la lutte.",
+  },
+  {
+    phrase: "No one is superior except by their good deeds.",
+    source: "Quran",
+    french: "Personne n'est supérieur sauf par ses bonnes actions.",
+  },
+  { phrase: "Guard your tongue.", source: "Quran", french: "Surveille ta langue." },
+  {
+    phrase: "Seek knowledge from the cradle to the grave.",
+    source: "Quran",
+    french: "Cherche le savoir du berceau à la tombe.",
+  },
+  {
+    phrase: "The best richness is the richness of the soul.",
+    source: "Quran",
+    french: "La meilleure richesse est la richesse de l'âme.",
   },
 
-  // Talmud (15)
+  { phrase: "The whole world is in your hands.", source: "Talmud", french: "Le monde entier est entre tes mains." },
   {
-    english: "Who is wise? One who learns from every person.",
-    french: "Qui est sage ? Celui qui apprend de chaque personne.",
+    phrase: "Who is wise? One who learns from every person.",
     source: "Talmud",
+    french: "Qui est sage? Celui qui apprend de chaque personne.",
+  },
+  { phrase: "Silence is a fence for wisdom.", source: "Talmud", french: "Le silence est une clôture pour la sagesse." },
+  {
+    phrase: "The day is short and the work is much.",
+    source: "Talmud",
+    french: "Le jour est court et le travail est abondant.",
   },
   {
-    english: "The world stands on three things: justice, truth, and peace.",
-    french: "Le monde repose sur trois choses : la justice, la vérité et la paix.",
+    phrase: "Do not be daunted by the enormity of the task.",
     source: "Talmud",
+    french: "Ne sois pas intimidé par l'énormité de la tâche.",
+  },
+  { phrase: "Say little and do much.", source: "Talmud", french: "Dis peu et fais beaucoup." },
+  {
+    phrase: "The reward is proportionate to the effort.",
+    source: "Talmud",
+    french: "La récompense est proportionnelle à l'effort.",
   },
   {
-    english: "Do not be daunted by the enormity of the world's grief.",
-    french: "Ne soyez pas intimidé par l'énormité du chagrin du monde.",
+    phrase: "If I am not for myself, who will be for me?",
     source: "Talmud",
+    french: "Si je ne suis pas pour moi, qui le sera?",
+  },
+  { phrase: "Judge every person favorably.", source: "Talmud", french: "Juge chaque personne favorablement." },
+  {
+    phrase: "It is not your duty to finish the work.",
+    source: "Talmud",
+    french: "Ce n'est pas ton devoir de finir le travail.",
   },
   {
-    english: "It is not your responsibility to finish the work, but neither are you free to desist from it.",
-    french:
-      "Ce n'est pas votre responsabilité de finir le travail, mais vous n'êtes pas libre non plus de vous en abstenir.",
+    phrase: "Words that come from the heart enter the heart.",
     source: "Talmud",
+    french: "Les mots qui viennent du cœur entrent dans le cœur.",
   },
   {
-    english: "Silence is a fence around wisdom.",
-    french: "Le silence est une clôture autour de la sagesse.",
+    phrase: "The highest form of wisdom is kindness.",
     source: "Talmud",
-  },
-  { english: "Say little and do much.", french: "Dis peu et fais beaucoup.", source: "Talmud" },
-  {
-    english: "Who is mighty? One who subdues their evil inclination.",
-    french: "Qui est puissant ? Celui qui maîtrise ses mauvais penchants.",
-    source: "Talmud",
+    french: "La forme la plus élevée de sagesse est la gentillesse.",
   },
   {
-    english: "If I am not for myself, who will be for me?",
-    french: "Si je ne suis pas pour moi, qui sera pour moi ?",
+    phrase: "A person is judged by their deeds, not their words.",
     source: "Talmud",
+    french: "Une personne est jugée par ses actes, non par ses paroles.",
   },
   {
-    english: "Love work, hate acting the superior, and do not get friendly with the government.",
-    french: "Aimez le travail, détestez jouer au supérieur, et ne vous liez pas d'amitié avec le gouvernement.",
+    phrase: "Every blade of grass has an angel saying grow.",
     source: "Talmud",
-  },
-  { english: "Do justice, and that is enough.", french: "Faites justice, et cela suffit.", source: "Talmud" },
-  {
-    english: "The day is short, and the work is much.",
-    french: "Le jour est court, et le travail est abondant.",
-    source: "Talmud",
-  },
-  {
-    english: "Every blade of grass has its angel that bends over it and whispers, grow, grow.",
-    french: "Chaque brin d'herbe a son ange qui se penche sur lui et murmure : grandis, grandis.",
-    source: "Talmud",
-  },
-  { english: "Make your books your companions.", french: "Faites de vos livres vos compagnons.", source: "Talmud" },
-  {
-    english: "The highest form of wisdom is kindness.",
-    french: "La forme la plus élevée de sagesse est la bonté.",
-    source: "Talmud",
-  },
-  {
-    english: "A person should always be gentle like a reed and not rigid like a cedar.",
-    french: "Une personne devrait toujours être douce comme un roseau et non rigide comme un cèdre.",
-    source: "Talmud",
+    french: "Chaque brin d'herbe a un ange qui dit grandis.",
   },
 
-  // US Bill of Rights (5)
   {
-    english:
-      "Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof.",
-    french:
-      "Le Congrès ne fera aucune loi concernant l'établissement d'une religion, ou interdisant le libre exercice de celle-ci.",
-    source: "US Bill of Rights",
+    phrase: "Congress shall make no law respecting an establishment of religion.",
+    source: "Bill of Rights",
+    french: "Le Congrès ne fera aucune loi concernant l'établissement d'une religion.",
   },
   {
-    english: "The right of the people to keep and bear Arms, shall not be infringed.",
+    phrase: "The right of the people to keep and bear arms shall not be infringed.",
+    source: "Bill of Rights",
     french: "Le droit du peuple de détenir et de porter des armes ne sera pas enfreint.",
-    source: "US Bill of Rights",
   },
   {
-    english:
-      "The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated.",
-    french:
-      "Le droit du peuple d'être en sécurité dans leurs personnes, maisons, papiers et effets, contre les perquisitions et saisies abusives, ne sera pas violé.",
-    source: "US Bill of Rights",
+    phrase: "No soldier shall be quartered in any house without consent.",
+    source: "Bill of Rights",
+    french: "Aucun soldat ne sera logé dans une maison sans consentement.",
   },
   {
-    english: "No person shall be compelled in any criminal case to be a witness against himself.",
-    french: "Nulle personne ne sera obligée, dans une affaire criminelle, de témoigner contre elle-même.",
-    source: "US Bill of Rights",
+    phrase: "The right to be secure in their persons and houses.",
+    source: "Bill of Rights",
+    french: "Le droit d'être en sécurité dans leur personne et leur maison.",
   },
   {
-    english: "In all criminal prosecutions, the accused shall enjoy the right to a speedy and public trial.",
-    french: "Dans toutes les poursuites pénales, l'accusé jouira du droit à un procès rapide et public.",
-    source: "US Bill of Rights",
+    phrase: "No person shall be deprived of life, liberty, or property without due process.",
+    source: "Bill of Rights",
+    french: "Aucune personne ne sera privée de vie, liberté ou propriété sans procédure régulière.",
   },
 
-  // US Declaration of Independence (5)
   {
-    english: "We hold these truths to be self-evident, that all men are created equal.",
-    french: "Nous tenons pour évidentes ces vérités : que tous les hommes sont créés égaux.",
-    source: "US Declaration of Independence",
+    phrase: "We hold these truths to be self-evident.",
+    source: "Declaration of Independence",
+    french: "Nous tenons ces vérités pour évidentes.",
   },
   {
-    english:
-      "They are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.",
-    french:
-      "Ils sont dotés par leur Créateur de certains droits inaliénables, parmi lesquels figurent la vie, la liberté et la poursuite du bonheur.",
-    source: "US Declaration of Independence",
+    phrase: "Life, liberty, and the pursuit of happiness.",
+    source: "Declaration of Independence",
+    french: "La vie, la liberté et la poursuite du bonheur.",
   },
   {
-    english: "Governments are instituted among Men, deriving their just powers from the consent of the governed.",
-    french:
-      "Les gouvernements sont institués parmi les hommes, tirant leurs justes pouvoirs du consentement des gouvernés.",
-    source: "US Declaration of Independence",
+    phrase: "All men are endowed with certain unalienable rights.",
+    source: "Declaration of Independence",
+    french: "Tous les hommes sont dotés de certains droits inaliénables.",
   },
   {
-    english:
-      "Whenever any Form of Government becomes destructive of these ends, it is the Right of the People to alter or to abolish it.",
-    french:
-      "Chaque fois qu'une forme de gouvernement devient destructrice de ces fins, c'est le droit du peuple de la modifier ou de l'abolir.",
-    source: "US Declaration of Independence",
-  },
-  {
-    english: "We mutually pledge to each other our Lives, our Fortunes and our sacred Honor.",
-    french: "Nous nous engageons mutuellement nos vies, nos fortunes et notre honneur sacré.",
-    source: "US Declaration of Independence",
+    phrase: "Governments derive their just powers from the consent of the governed.",
+    source: "Declaration of Independence",
+    french: "Les gouvernements tirent leurs justes pouvoirs du consentement des gouvernés.",
   },
 
-  // Mao's Little Red Book (10)
   {
-    english: "Political power grows out of the barrel of a gun.",
+    phrase: "Political power grows out of the barrel of a gun.",
+    source: "Mao",
     french: "Le pouvoir politique naît du canon d'un fusil.",
-    source: "Mao's Little Red Book",
   },
+  { phrase: "Let a hundred flowers bloom.", source: "Mao", french: "Que cent fleurs s'épanouissent." },
   {
-    english: "A revolution is not a dinner party.",
-    french: "Une révolution n'est pas un banquet.",
-    source: "Mao's Little Red Book",
+    phrase: "The people, and the people alone, are the motive force.",
+    source: "Mao",
+    french: "Le peuple, et le peuple seul, est la force motrice.",
   },
+  { phrase: "To read too many books is harmful.", source: "Mao", french: "Lire trop de livres est nuisible." },
   {
-    english: "Let a hundred flowers bloom, let a hundred schools of thought contend.",
-    french: "Que cent fleurs s'épanouissent, que cent écoles rivalisent.",
-    source: "Mao's Little Red Book",
+    phrase: "A revolution is not a dinner party.",
+    source: "Mao",
+    french: "Une révolution n'est pas un dîner mondain.",
   },
+  { phrase: "Women hold up half the sky.", source: "Mao", french: "Les femmes soutiennent la moitié du ciel." },
   {
-    english: "The people, and the people alone, are the motive force in the making of world history.",
-    french: "Le peuple, et le peuple seul, est la force motrice qui fait l'histoire du monde.",
-    source: "Mao's Little Red Book",
-  },
-  {
-    english: "To read too many books is harmful.",
-    french: "Lire trop de livres est nuisible.",
-    source: "Mao's Little Red Book",
-  },
-  {
-    english: "Women hold up half the sky.",
-    french: "Les femmes soutiennent la moitié du ciel.",
-    source: "Mao's Little Red Book",
-  },
-  {
-    english: "The masses are the real heroes.",
-    french: "Les masses sont les vrais héros.",
-    source: "Mao's Little Red Book",
-  },
-  {
-    english: "Be resolute, fear no sacrifice, and surmount every difficulty to win victory.",
-    french:
-      "Soyez résolus, ne craignez aucun sacrifice, et surmontez toutes les difficultés pour remporter la victoire.",
-    source: "Mao's Little Red Book",
-  },
-  {
-    english: "Practice is the sole criterion of truth.",
+    phrase: "Practice is the sole criterion of truth.",
+    source: "Mao",
     french: "La pratique est le seul critère de vérité.",
-    source: "Mao's Little Red Book",
   },
   {
-    english: "A single spark can start a prairie fire.",
-    french: "Une seule étincelle peut déclencher un incendie de prairie.",
-    source: "Mao's Little Red Book",
+    phrase: "Be resolute, fear no sacrifice, and surmount every difficulty.",
+    source: "Mao",
+    french: "Sois résolu, ne crains aucun sacrifice et surmonte toutes les difficultés.",
+  },
+  {
+    phrase: "The east wind prevails over the west wind.",
+    source: "Mao",
+    french: "Le vent d'est l'emporte sur le vent d'ouest.",
+  },
+  { phrase: "Seek truth from facts.", source: "Mao", french: "Cherche la vérité dans les faits." },
+
+  {
+    phrase: "It does not matter how slowly you go as long as you do not stop.",
+    source: "Confucius",
+    french: "Peu importe la lenteur de ta progression tant que tu ne t'arrêtes pas.",
+  },
+  {
+    phrase: "Our greatest glory is not in never falling, but in rising every time we fall.",
+    source: "Confucius",
+    french: "Notre plus grande gloire n'est pas de ne jamais tomber, mais de nous relever à chaque chute.",
+  },
+  {
+    phrase: "When anger rises, think of the consequences.",
+    source: "Confucius",
+    french: "Quand la colère monte, pense aux conséquences.",
+  },
+  {
+    phrase: "The man who moves a mountain begins by carrying away small stones.",
+    source: "Confucius",
+    french: "L'homme qui déplace une montagne commence par enlever de petites pierres.",
+  },
+  {
+    phrase: "Study the past if you would define the future.",
+    source: "Confucius",
+    french: "Étudie le passé si tu veux définir l'avenir.",
+  },
+  {
+    phrase: "Silence is a true friend who never betrays.",
+    source: "Confucius",
+    french: "Le silence est un véritable ami qui ne trahit jamais.",
+  },
+  {
+    phrase: "Better a diamond with a flaw than a pebble without.",
+    source: "Confucius",
+    french: "Mieux vaut un diamant avec un défaut qu'un caillou sans.",
+  },
+  {
+    phrase: "To see what is right and not do it is cowardice.",
+    source: "Confucius",
+    french: "Voir ce qui est juste et ne pas le faire est de la lâcheté.",
+  },
+  {
+    phrase: "The will to win, the desire to succeed, these are the keys.",
+    source: "Confucius",
+    french: "La volonté de gagner, le désir de réussir, ce sont les clés.",
+  },
+  {
+    phrase: "He who learns but does not think is lost.",
+    source: "Confucius",
+    french: "Celui qui apprend mais ne pense pas est perdu.",
   },
 
-  // Confucius (10)
   {
-    english: "It does not matter how slowly you go as long as you do not stop.",
-    french: "Peu importe la lenteur à laquelle vous allez tant que vous ne vous arrêtez pas.",
-    source: "Confucius",
-  },
-  {
-    english: "Our greatest glory is not in never falling, but in rising every time we fall.",
-    french:
-      "Notre plus grande gloire n'est pas de ne jamais tomber, mais de nous relever chaque fois que nous tombons.",
-    source: "Confucius",
-  },
-  {
-    english: "When we see men of a contrary character, we should turn inwards and examine ourselves.",
-    french:
-      "Quand nous voyons des hommes de caractère contraire, nous devrions nous tourner vers l'intérieur et nous examiner.",
-    source: "Confucius",
-  },
-  {
-    english: "Real knowledge is to know the extent of one's ignorance.",
-    french: "La vraie connaissance est de connaître l'étendue de son ignorance.",
-    source: "Confucius",
-  },
-  {
-    english: "Before you embark on a journey of revenge, dig two graves.",
-    french: "Avant de vous lancer dans un voyage de vengeance, creusez deux tombes.",
-    source: "Confucius",
-  },
-  {
-    english: "The man who moves a mountain begins by carrying away small stones.",
-    french: "L'homme qui déplace une montagne commence par emporter de petites pierres.",
-    source: "Confucius",
-  },
-  {
-    english: "Wherever you go, go with all your heart.",
-    french: "Où que vous alliez, allez-y de tout votre cœur.",
-    source: "Confucius",
-  },
-  {
-    english:
-      "The will to win, the desire to succeed, the urge to reach your full potential, these are the keys that will unlock the door to personal excellence.",
-    french:
-      "La volonté de gagner, le désir de réussir, l'envie d'atteindre votre plein potentiel, ce sont les clés qui ouvriront la porte de l'excellence personnelle.",
-    source: "Confucius",
-  },
-  {
-    english: "Choose a job you love, and you will never have to work a day in your life.",
-    french: "Choisissez un travail que vous aimez, et vous n'aurez jamais à travailler un seul jour de votre vie.",
-    source: "Confucius",
-  },
-  {
-    english: "Respect yourself and others will respect you.",
-    french: "Respectez-vous et les autres vous respecteront.",
-    source: "Confucius",
-  },
-
-  // Bhagavad Gita (10)
-  {
-    english: "You have the right to work, but never to the fruit of work.",
-    french: "Vous avez le droit de travailler, mais jamais au fruit du travail.",
+    phrase: "You are what you believe yourself to be.",
     source: "Bhagavad Gita",
+    french: "Tu es ce que tu crois être.",
   },
   {
-    english: "Change is the law of the universe.",
+    phrase: "Set thy heart upon thy work, but never on its reward.",
+    source: "Bhagavad Gita",
+    french: "Place ton cœur sur ton travail, mais jamais sur sa récompense.",
+  },
+  {
+    phrase: "Change is the law of the universe.",
+    source: "Bhagavad Gita",
     french: "Le changement est la loi de l'univers.",
-    source: "Bhagavad Gita",
-  },
-  { english: "A man is made by his beliefs.", french: "Un homme est fait par ses croyances.", source: "Bhagavad Gita" },
-  {
-    english: "Set thy heart upon thy work, but never on its reward.",
-    french: "Mets ton cœur dans ton travail, mais jamais dans sa récompense.",
-    source: "Bhagavad Gita",
   },
   {
-    english: "The soul is neither born, and nor does it die.",
-    french: "L'âme ne naît pas, et elle ne meurt pas non plus.",
+    phrase: "A person can rise through the efforts of their own mind.",
     source: "Bhagavad Gita",
+    french: "Une personne peut s'élever par les efforts de son propre esprit.",
   },
   {
-    english: "Perform your obligatory duty, because action is indeed better than inaction.",
-    french: "Accomplissez votre devoir obligatoire, car l'action est en effet meilleure que l'inaction.",
+    phrase: "The mind acts like an enemy for those who do not control it.",
     source: "Bhagavad Gita",
+    french: "L'esprit agit comme un ennemi pour ceux qui ne le contrôlent pas.",
   },
   {
-    english: "The mind is restless and difficult to restrain, but it is subdued by practice.",
-    french: "L'esprit est agité et difficile à retenir, mais il est maîtrisé par la pratique.",
+    phrase: "Those who are free from anger attain the eternal state.",
     source: "Bhagavad Gita",
+    french: "Ceux qui sont libérés de la colère atteignent l'état éternel.",
   },
   {
-    english:
-      "For one who has conquered his mind, a mind is best of friends, but for one who has failed to do so, a mind is the greatest enemy.",
-    french:
-      "Pour celui qui a conquis son esprit, un esprit est le meilleur des amis, mais pour celui qui n'y est pas parvenu, un esprit est le plus grand ennemi.",
+    phrase: "Whatever happened was good, whatever is happening is good.",
     source: "Bhagavad Gita",
+    french: "Tout ce qui s'est passé était bon, tout ce qui se passe est bon.",
   },
   {
-    english: "One who sees inaction in action, and action in inaction, is intelligent among men.",
-    french: "Celui qui voit l'inaction dans l'action, et l'action dans l'inaction, est intelligent parmi les hommes.",
+    phrase: "The soul is neither born nor does it die.",
     source: "Bhagavad Gita",
+    french: "L'âme ne naît ni ne meurt.",
   },
   {
-    english: "When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place.",
-    french:
-      "Lorsque la méditation est maîtrisée, l'esprit est inébranlable comme la flamme d'une lampe dans un endroit sans vent.",
+    phrase: "Calmness, gentleness, silence, self-restraint, and purity.",
     source: "Bhagavad Gita",
+    french: "Calme, douceur, silence, maîtrise de soi et pureté.",
+  },
+  {
+    phrase: "Hell has three gates: lust, anger, and greed.",
+    source: "Bhagavad Gita",
+    french: "L'enfer a trois portes: la luxure, la colère et l'avidité.",
   },
 
-  // Karl Marx (10)
   {
-    english: "Workers of the world, unite!",
-    french: "Prolétaires de tous les pays, unissez-vous !",
+    phrase: "The history of all society is the history of class struggles.",
     source: "Karl Marx",
+    french: "L'histoire de toute société est l'histoire de luttes de classes.",
   },
   {
-    english: "From each according to his ability, to each according to his needs.",
+    phrase: "From each according to his ability, to each according to his needs.",
+    source: "Karl Marx",
     french: "De chacun selon ses capacités, à chacun selon ses besoins.",
+  },
+  { phrase: "Religion is the opium of the people.", source: "Karl Marx", french: "La religion est l'opium du peuple." },
+  {
+    phrase: "The philosophers have only interpreted the world; the point is to change it.",
     source: "Karl Marx",
+    french: "Les philosophes n'ont fait qu'interpréter le monde; il s'agit de le transformer.",
   },
   {
-    english: "The history of all hitherto existing society is the history of class struggles.",
-    french: "L'histoire de toute société jusqu'à nos jours est l'histoire de luttes de classes.",
+    phrase: "The ruling ideas are the ideas of the ruling class.",
     source: "Karl Marx",
+    french: "Les idées dominantes sont les idées de la classe dominante.",
   },
   {
-    english: "Religion is the opium of the people.",
-    french: "La religion est l'opium du peuple.",
+    phrase: "Capital is dead labor which only lives by sucking living labor.",
     source: "Karl Marx",
+    french: "Le capital est du travail mort qui ne vit qu'en suçant le travail vivant.",
   },
   {
-    english: "The philosophers have only interpreted the world, the point is to change it.",
-    french: "Les philosophes n'ont fait qu'interpréter le monde, il s'agit maintenant de le transformer.",
+    phrase: "The production of too many useful things produces too many useless people.",
     source: "Karl Marx",
+    french: "La production de trop de choses utiles produit trop de gens inutiles.",
   },
   {
-    english: "Social progress can be measured by the social position of the female sex.",
+    phrase: "Social progress can be measured by the social position of the female sex.",
+    source: "Karl Marx",
     french: "Le progrès social peut se mesurer à la position sociale du sexe féminin.",
-    source: "Karl Marx",
   },
   {
-    english: "The production of too many useful things results in too many useless people.",
-    french: "La production de trop de choses utiles résulte en trop de personnes inutiles.",
+    phrase: "Reason has always existed, but not always in a reasonable form.",
     source: "Karl Marx",
+    french: "La raison a toujours existé, mais pas toujours sous une forme raisonnable.",
   },
   {
-    english: "Capital is dead labor, which, vampire-like, lives only by sucking living labor.",
-    french: "Le capital est du travail mort, qui, tel un vampire, ne vit qu'en suçant le travail vivant.",
+    phrase: "The worker becomes poorer the more wealth he produces.",
     source: "Karl Marx",
-  },
-  {
-    english: "The ruling ideas of each age have ever been the ideas of its ruling class.",
-    french: "Les idées dominantes de chaque époque ont toujours été les idées de sa classe dominante.",
-    source: "Karl Marx",
-  },
-  {
-    english: "Democracy is the road to socialism.",
-    french: "La démocratie est le chemin vers le socialisme.",
-    source: "Karl Marx",
+    french: "Le travailleur devient plus pauvre plus il produit de richesses.",
   },
 
-  // Vladimir Lenin (10)
   {
-    english: "There are no morals in politics; there is only expedience.",
-    french: "Il n'y a pas de morale en politique ; il n'y a que l'opportunisme.",
+    phrase: "There are decades when nothing happens and weeks when decades happen.",
     source: "Vladimir Lenin",
+    french: "Il y a des décennies où rien ne se passe et des semaines où des décennies se passent.",
   },
   {
-    english: "A lie told often enough becomes the truth.",
+    phrase: "A lie told often enough becomes the truth.",
+    source: "Vladimir Lenin",
     french: "Un mensonge répété assez souvent devient la vérité.",
-    source: "Vladimir Lenin",
   },
   {
-    english: "Give me four years to teach the children and the seed I have sown will never be uprooted.",
+    phrase: "The capitalists will sell us the rope with which to hang them.",
+    source: "Vladimir Lenin",
+    french: "Les capitalistes nous vendront la corde avec laquelle nous les pendrons.",
+  },
+  {
+    phrase: "Give me four years to teach the children and the seed I have sown will never be uprooted.",
+    source: "Vladimir Lenin",
     french: "Donnez-moi quatre ans pour enseigner aux enfants et la graine que j'ai semée ne sera jamais déracinée.",
-    source: "Vladimir Lenin",
   },
   {
-    english:
-      "Freedom in capitalist society always remains about the same as it was in ancient Greek republics: freedom for slave owners.",
-    french:
-      "La liberté dans la société capitaliste reste toujours à peu près la même qu'elle était dans les républiques grecques antiques : la liberté pour les propriétaires d'esclaves.",
+    phrase: "One man with a gun can control a hundred without one.",
     source: "Vladimir Lenin",
+    french: "Un homme avec un fusil peut contrôler cent personnes sans fusil.",
   },
   {
-    english: "The best way to control the opposition is to lead it ourselves.",
-    french: "La meilleure façon de contrôler l'opposition est de la diriger nous-mêmes.",
+    phrase: "The best way to destroy the capitalist system is to debauch the currency.",
     source: "Vladimir Lenin",
+    french: "Le meilleur moyen de détruire le système capitaliste est de débaucher la monnaie.",
   },
   {
-    english: "Without revolutionary theory there can be no revolutionary movement.",
-    french: "Sans théorie révolutionnaire, il ne peut y avoir de mouvement révolutionnaire.",
+    phrase: "Liberty is precious, so precious that it must be rationed.",
     source: "Vladimir Lenin",
+    french: "La liberté est précieuse, si précieuse qu'elle doit être rationnée.",
   },
   {
-    english: "The goal of socialism is communism.",
+    phrase: "The goal of socialism is communism.",
+    source: "Vladimir Lenin",
     french: "Le but du socialisme est le communisme.",
-    source: "Vladimir Lenin",
   },
   {
-    english: "One man with a gun can control a hundred without one.",
-    french: "Un homme avec un fusil peut contrôler cent hommes sans fusil.",
+    phrase: "Trust is good, but control is better.",
     source: "Vladimir Lenin",
-  },
-  {
-    english:
-      "The press should be not only a collective propagandist and a collective agitator, but also a collective organizer of the masses.",
-    french:
-      "La presse ne devrait pas être seulement un propagandiste collectif et un agitateur collectif, mais aussi un organisateur collectif des masses.",
-    source: "Vladimir Lenin",
-  },
-  {
-    english: "Trust is good, but control is better.",
     french: "La confiance est bonne, mais le contrôle est meilleur.",
+  },
+  {
+    phrase: "Without revolutionary theory there can be no revolutionary movement.",
     source: "Vladimir Lenin",
+    french: "Sans théorie révolutionnaire, il ne peut y avoir de mouvement révolutionnaire.",
   },
 
-  // Albert Einstein (5)
   {
-    english: "Imagination is more important than knowledge.",
+    phrase: "Imagination is more important than knowledge.",
+    source: "Albert Einstein",
     french: "L'imagination est plus importante que le savoir.",
-    source: "Albert Einstein",
   },
   {
-    english: "The important thing is not to stop questioning.",
-    french: "L'important est de ne jamais cesser de s'interroger.",
+    phrase: "The important thing is not to stop questioning.",
     source: "Albert Einstein",
+    french: "L'important est de ne jamais cesser de questionner.",
   },
   {
-    english: "Life is like riding a bicycle.",
-    french: "La vie, c'est comme une bicyclette.",
+    phrase: "Life is like riding a bicycle. To keep balance you must keep moving.",
     source: "Albert Einstein",
+    french: "La vie c'est comme une bicyclette, il faut avancer pour ne pas perdre l'équilibre.",
   },
   {
-    english: "In the middle of difficulty lies opportunity.",
+    phrase: "Try not to become a man of success but a man of value.",
+    source: "Albert Einstein",
+    french: "N'essaie pas de devenir un homme qui a du succès, mais un homme qui a de la valeur.",
+  },
+
+  { phrase: "Common sense is not so common.", source: "Observation", french: "Le bon sens n'est pas si commun." },
+  {
+    phrase: "A day without laughter is a day wasted.",
+    source: "Observation",
+    french: "Un jour sans rire est un jour perdu.",
+  },
+  {
+    phrase: "The only way to do great work is to love what you do.",
+    source: "Observation",
+    french: "La seule façon de faire du bon travail est d'aimer ce que tu fais.",
+  },
+  {
+    phrase: "Life is what happens when you're busy making other plans.",
+    source: "Observation",
+    french: "La vie c'est ce qui arrive quand tu es occupé à faire d'autres projets.",
+  },
+  {
+    phrase: "You miss one hundred percent of the shots you don't take.",
+    source: "Observation",
+    french: "Tu rates cent pour cent des tirs que tu ne prends pas.",
+  },
+  {
+    phrase: "The only true wisdom is in knowing you know nothing.",
+    source: "Observation",
+    french: "La seule vraie sagesse est de savoir que tu ne sais rien.",
+  },
+  {
+    phrase: "Be yourself; everyone else is already taken.",
+    source: "Observation",
+    french: "Sois toi-même; tous les autres sont déjà pris.",
+  },
+  {
+    phrase: "Two things are infinite: the universe and human stupidity.",
+    source: "Observation",
+    french: "Deux choses sont infinies: l'univers et la bêtise humaine.",
+  },
+  {
+    phrase: "The journey of a thousand miles begins with a single step.",
+    source: "Observation",
+    french: "Un voyage de mille lieues commence par un seul pas.",
+  },
+  {
+    phrase: "In the middle of difficulty lies opportunity.",
+    source: "Observation",
     french: "Au milieu de la difficulté se trouve l'opportunité.",
-    source: "Albert Einstein",
   },
   {
-    english: "Try not to become a man of success, but rather try to become a man of value.",
-    french: "N'essayez pas de devenir un homme qui a du succès, mais plutôt un homme qui a de la valeur.",
-    source: "Albert Einstein",
+    phrase: "Yesterday is history, tomorrow is a mystery, today is a gift.",
+    source: "Observation",
+    french: "Hier est l'histoire, demain est un mystère, aujourd'hui est un cadeau.",
+  },
+  {
+    phrase: "If you tell the truth, you don't have to remember anything.",
+    source: "Observation",
+    french: "Si tu dis la vérité, tu n'as rien à te rappeler.",
+  },
+  {
+    phrase: "A friend is someone who knows all about you and still loves you.",
+    source: "Observation",
+    french: "Un ami est quelqu'un qui sait tout de toi et t'aime quand même.",
+  },
+  {
+    phrase: "The fool doth think he is wise, but the wise man knows himself to be a fool.",
+    source: "Observation",
+    french: "Le fou pense être sage, mais le sage sait qu'il est fou.",
+  },
+  {
+    phrase: "The pessimist complains about the wind; the optimist expects it to change.",
+    source: "Observation",
+    french: "Le pessimiste se plaint du vent; l'optimiste s'attend à ce qu'il change.",
+  },
+  {
+    phrase: "It is during our darkest moments that we must focus to see the light.",
+    source: "Observation",
+    french: "C'est dans nos moments les plus sombres que nous devons nous concentrer pour voir la lumière.",
+  },
+  {
+    phrase: "Not all those who wander are lost.",
+    source: "Observation",
+    french: "Tous ceux qui errent ne sont pas perdus.",
+  },
+  {
+    phrase: "Success is not final, failure is not fatal, it is courage that counts.",
+    source: "Observation",
+    french: "Le succès n'est pas final, l'échec n'est pas fatal, c'est le courage qui compte.",
+  },
+  {
+    phrase: "The only impossible journey is the one you never begin.",
+    source: "Observation",
+    french: "Le seul voyage impossible est celui que tu ne commences jamais.",
   },
 
-  // Humorous/Clever Observations (20)
   {
-    english: "I intend to live forever, or die trying.",
-    french: "J'ai l'intention de vivre éternellement, ou mourir en essayant.",
-    source: "Groucho Marx",
+    phrase: "All the world's a stage, and all the men and women merely players.",
+    source: "Shakespeare",
+    french: "Le monde entier est un théâtre, et tous les hommes et femmes ne sont que des acteurs.",
+  },
+  { phrase: "Brevity is the soul of wit.", source: "Shakespeare", french: "La brièveté est l'âme de l'esprit." },
+  {
+    phrase: "Cowards die many times before their deaths.",
+    source: "Shakespeare",
+    french: "Les lâches meurent plusieurs fois avant leur mort.",
   },
   {
-    english: "I never forget a face, but in your case, I'll be glad to make an exception.",
-    french: "Je n'oublie jamais un visage, mais dans votre cas, je serai heureux de faire une exception.",
-    source: "Groucho Marx",
+    phrase: "Some are born great, some achieve greatness.",
+    source: "Shakespeare",
+    french: "Certains naissent grands, d'autres atteignent la grandeur.",
   },
   {
-    english: "Time flies like an arrow; fruit flies like a banana.",
-    french: "Le temps vole comme une flèche ; les mouches des fruits aiment une banane.",
-    source: "Anonymous",
+    phrase: "Love all, trust a few, do wrong to none.",
+    source: "Shakespeare",
+    french: "Aime tous, fais confiance à quelques-uns, ne fais de mal à personne.",
   },
   {
-    english: "I'm not superstitious, but I am a little stitious.",
-    french: "Je ne suis pas superstitieux, mais je suis un peu stitieux.",
-    source: "Michael Scott",
-  },
-  { english: "I have not failed.", french: "Je n'ai pas échoué.", source: "Thomas Edison" },
-  {
-    english: "The difference between stupidity and genius is that genius has its limits.",
-    french: "La différence entre la stupidité et le génie est que le génie a ses limites.",
-    source: "Anonymous",
-  },
-  { english: "I'm writing a book.", french: "J'écris un livre.", source: "Steven Wright" },
-  {
-    english: "A day without sunshine is like, you know, night.",
-    french: "Un jour sans soleil, c'est comme, vous savez, la nuit.",
-    source: "Steve Martin",
+    phrase: "The course of true love never did run smooth.",
+    source: "Shakespeare",
+    french: "Le cours du véritable amour n'a jamais été tranquille.",
   },
   {
-    english: "If you think nobody cares if you're alive, try missing a couple of car payments.",
-    french:
-      "Si vous pensez que personne ne se soucie de savoir si vous êtes vivant, essayez de manquer quelques paiements de voiture.",
-    source: "Earl Wilson",
+    phrase: "This above all: to thine own self be true.",
+    source: "Shakespeare",
+    french: "Par-dessus tout: sois fidèle à toi-même.",
+  },
+  { phrase: "What's done cannot be undone.", source: "Shakespeare", french: "Ce qui est fait ne peut être défait." },
+  {
+    phrase: "Hell is empty and all the devils are here.",
+    source: "Shakespeare",
+    french: "L'enfer est vide et tous les démons sont ici.",
   },
   {
-    english: "The early bird gets the worm, but the second mouse gets the cheese.",
-    french: "Le lève-tôt attrape le ver, mais la deuxième souris obtient le fromage.",
-    source: "Anonymous",
+    phrase: "We know what we are, but know not what we may be.",
+    source: "Shakespeare",
+    french: "Nous savons ce que nous sommes, mais nous ne savons pas ce que nous pouvons devenir.",
   },
+
   {
-    english: "Behind every great man is a woman rolling her eyes.",
-    french: "Derrière chaque grand homme se trouve une femme qui lève les yeux au ciel.",
-    source: "Jim Carrey",
-  },
-  {
-    english: "I used to think I was indecisive, but now I'm not so sure.",
-    french: "Je pensais être indécis, mais maintenant je n'en suis plus si sûr.",
-    source: "Anonymous",
-  },
-  {
-    english: "A clear conscience is usually the sign of a bad memory.",
-    french: "Une conscience claire est généralement le signe d'une mauvaise mémoire.",
-    source: "Anonymous",
-  },
-  {
-    english: "Age is an issue of mind over matter.",
-    french: "L'âge est une question d'esprit sur la matière.",
+    phrase: "The secret of getting ahead is getting started.",
     source: "Mark Twain",
-  },
-  {
-    english: "Money can't buy happiness, but it can buy bacon, which is pretty much the same thing.",
-    french:
-      "L'argent ne peut pas acheter le bonheur, mais il peut acheter du bacon, ce qui revient à peu près au même.",
-    source: "Anonymous",
-  },
-  { english: "Common sense is like deodorant.", french: "Le bon sens est comme le déodorant.", source: "Anonymous" },
-  {
-    english: "If at first you don't succeed, then skydiving definitely isn't for you.",
-    french: "Si vous n'y arrivez pas du premier coup, alors le parachutisme n'est définitivement pas pour vous.",
-    source: "Steven Wright",
-  },
-  {
-    english: "The road to success is dotted with many tempting parking spaces.",
-    french: "La route du succès est parsemée de nombreuses places de stationnement tentantes.",
-    source: "Will Rogers",
-  },
-  {
-    english: "Do not take life too seriously.",
-    french: "Ne prenez pas la vie trop au sérieux.",
-    source: "Elbert Hubbard",
-  },
-  {
-    english: "The trouble with the rat race is that even if you win, you're still a rat.",
-    french: "Le problème avec la course effrénée, c'est que même si vous gagnez, vous êtes toujours un rat.",
-    source: "Lily Tomlin",
-  },
-
-  // Shakespeare (10)
-  {
-    english: "To be, or not to be, that is the question.",
-    french: "Être ou ne pas être, telle est la question.",
-    source: "Shakespeare",
-  },
-  {
-    english: "All the world's a stage, and all the men and women merely players.",
-    french: "Le monde entier est une scène, et tous les hommes et femmes ne sont que des acteurs.",
-    source: "Shakespeare",
-  },
-  {
-    english: "Love all, trust a few, do wrong to none.",
-    french: "Aimez tous, faites confiance à quelques-uns, ne faites de tort à personne.",
-    source: "Shakespeare",
-  },
-  {
-    english: "The course of true love never did run smooth.",
-    french: "Le cours du véritable amour n'a jamais été facile.",
-    source: "Shakespeare",
-  },
-  { english: "Brevity is the soul of wit.", french: "La brièveté est l'âme de l'esprit.", source: "Shakespeare" },
-  {
-    english: "Some are born great, some achieve greatness, and some have greatness thrust upon them.",
-    french: "Certains naissent grands, certains atteignent la grandeur, et certains se voient imposer la grandeur.",
-    source: "Shakespeare",
-  },
-  {
-    english: "The better part of valor is discretion.",
-    french: "La meilleure partie de la valeur est la discrétion.",
-    source: "Shakespeare",
-  },
-  { english: "What's in a name?", french: "Qu'y a-t-il dans un nom ?", source: "Shakespeare" },
-  {
-    english: "Cowards die many times before their deaths; the valiant never taste of death but once.",
-    french: "Les lâches meurent plusieurs fois avant leur mort ; les vaillants ne goûtent à la mort qu'une fois.",
-    source: "Shakespeare",
-  },
-  {
-    english: "There is nothing either good or bad, but thinking makes it so.",
-    french: "Il n'y a rien de bon ou de mauvais en soi, c'est la pensée qui le rend tel.",
-    source: "Shakespeare",
-  },
-
-  // Mark Twain (10)
-  {
-    english: "The secret of getting ahead is getting started.",
     french: "Le secret pour avancer est de commencer.",
-    source: "Mark Twain",
   },
   {
-    english: "Kindness is the language which the deaf can hear and the blind can see.",
-    french: "La gentillesse est le langage que les sourds peuvent entendre et que les aveugles peuvent voir.",
+    phrase: "The two most important days in your life are the day you are born.",
     source: "Mark Twain",
+    french: "Les deux jours les plus importants de ta vie sont le jour où tu nais.",
   },
   {
-    english: "Never put off till tomorrow what may be done day after tomorrow just as well.",
-    french: "Ne remettez jamais à demain ce qui peut être fait après-demain tout aussi bien.",
+    phrase: "Kindness is the language which the deaf can hear and the blind can see.",
     source: "Mark Twain",
+    french: "La gentillesse est la langue que les sourds peuvent entendre et les aveugles peuvent voir.",
   },
   {
-    english: "The man who does not read has no advantage over the man who cannot read.",
-    french: "L'homme qui ne lit pas n'a aucun avantage sur l'homme qui ne peut pas lire.",
+    phrase: "It's not the size of the dog in the fight, it's the size of the fight in the dog.",
     source: "Mark Twain",
+    french: "Ce n'est pas la taille du chien dans le combat, c'est la taille du combat dans le chien.",
   },
   {
-    english: "Whenever you find yourself on the side of the majority, it is time to pause and reflect.",
-    french:
-      "Chaque fois que vous vous trouvez du côté de la majorité, il est temps de faire une pause et de réfléchir.",
+    phrase: "Never put off till tomorrow what may be done the day after tomorrow.",
     source: "Mark Twain",
+    french: "Ne remets jamais à demain ce qui peut être fait après-demain.",
   },
   {
-    english: "If you tell the truth, you don't have to remember anything.",
-    french: "Si vous dites la vérité, vous n'avez rien à vous rappeler.",
+    phrase: "Good friends, good books, and a sleepy conscience: this is the ideal life.",
     source: "Mark Twain",
+    french: "De bons amis, de bons livres et une conscience endormie: c'est la vie idéale.",
   },
   {
-    english: "Good friends, good books, and a sleepy conscience: this is the ideal life.",
-    french: "De bons amis, de bons livres et une conscience endormie : c'est la vie idéale.",
+    phrase: "Anger is an acid that can do more harm to the vessel than to anything.",
     source: "Mark Twain",
+    french: "La colère est un acide qui peut faire plus de mal au récipient qu'à n'importe quoi.",
   },
   {
-    english:
-      "Never argue with stupid people, they will drag you down to their level and then beat you with experience.",
-    french:
-      "Ne vous disputez jamais avec des gens stupides, ils vous tireront vers le bas à leur niveau puis vous battront avec l'expérience.",
+    phrase: "The man who does not read has no advantage over the man who cannot.",
     source: "Mark Twain",
+    french: "L'homme qui ne lit pas n'a aucun avantage sur l'homme qui ne peut pas.",
   },
   {
-    english: "The fear of death follows from the fear of life.",
-    french: "La peur de la mort découle de la peur de la vie.",
+    phrase: "Whenever you find yourself on the side of the majority, it is time to pause.",
     source: "Mark Twain",
+    french: "Chaque fois que tu te trouves du côté de la majorité, il est temps de faire une pause.",
   },
   {
-    english: "Courage is resistance to fear, mastery of fear, not absence of fear.",
-    french: "Le courage est la résistance à la peur, la maîtrise de la peur, pas l'absence de peur.",
+    phrase: "It is better to keep your mouth closed and let people think you are a fool.",
     source: "Mark Twain",
+    french: "Il vaut mieux garder la bouche fermée et laisser les gens penser que tu es un imbécile.",
   },
 
-  // Winston Churchill (5)
   {
-    english: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-    french: "Le succès n'est pas définitif, l'échec n'est pas fatal : c'est le courage de continuer qui compte.",
+    phrase: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
     source: "Winston Churchill",
+    french: "Le succès n'est pas final, l'échec n'est pas fatal: c'est le courage de continuer qui compte.",
   },
   {
-    english: "We make a living by what we get, but we make a life by what we give.",
+    phrase: "We make a living by what we get, but we make a life by what we give.",
+    source: "Winston Churchill",
     french: "Nous gagnons notre vie par ce que nous obtenons, mais nous faisons une vie par ce que nous donnons.",
-    source: "Winston Churchill",
   },
   {
-    english: "Attitude is a little thing that makes a big difference.",
+    phrase: "The price of greatness is responsibility.",
+    source: "Winston Churchill",
+    french: "Le prix de la grandeur est la responsabilité.",
+  },
+  {
+    phrase: "Attitude is a little thing that makes a big difference.",
+    source: "Winston Churchill",
     french: "L'attitude est une petite chose qui fait une grande différence.",
-    source: "Winston Churchill",
   },
   {
-    english: "If you're going through hell, keep going.",
-    french: "Si vous traversez l'enfer, continuez d'avancer.",
+    phrase: "Courage is what it takes to stand up and speak.",
     source: "Winston Churchill",
-  },
-  {
-    english: "To improve is to change; to be perfect is to change often.",
-    french: "S'améliorer, c'est changer ; être parfait, c'est changer souvent.",
-    source: "Winston Churchill",
+    french: "Le courage c'est ce qu'il faut pour se lever et parler.",
   },
 
-  // Oscar Wilde (10)
   {
-    english: "Be yourself; everyone else is already taken.",
-    french: "Soyez vous-même ; tous les autres sont déjà pris.",
+    phrase: "Be yourself; everyone else is already taken.",
     source: "Oscar Wilde",
+    french: "Sois toi-même; tous les autres sont déjà pris.",
   },
   {
-    english: "To live is the rarest thing in the world.",
-    french: "Vivre est la chose la plus rare au monde.",
+    phrase: "To live is the rarest thing in the world. Most people exist, that is all.",
     source: "Oscar Wilde",
+    french: "Vivre est la chose la plus rare au monde. La plupart des gens existent, c'est tout.",
   },
   {
-    english: "We are all in the gutter, but some of us are looking at the stars.",
-    french: "Nous sommes tous dans le caniveau, mais certains d'entre nous regardent les étoiles.",
+    phrase: "Always forgive your enemies; nothing annoys them so much.",
     source: "Oscar Wilde",
+    french: "Pardonne toujours tes ennemis; rien ne les agace autant.",
   },
   {
-    english: "I can resist everything except temptation.",
-    french: "Je peux résister à tout sauf à la tentation.",
+    phrase: "Experience is simply the name we give our mistakes.",
     source: "Oscar Wilde",
-  },
-  {
-    english: "Experience is simply the name we give our mistakes.",
     french: "L'expérience est simplement le nom que nous donnons à nos erreurs.",
-    source: "Oscar Wilde",
   },
   {
-    english: "The truth is rarely pure and never simple.",
+    phrase: "I can resist everything except temptation.",
+    source: "Oscar Wilde",
+    french: "Je peux résister à tout sauf à la tentation.",
+  },
+  {
+    phrase: "The truth is rarely pure and never simple.",
+    source: "Oscar Wilde",
     french: "La vérité est rarement pure et jamais simple.",
-    source: "Oscar Wilde",
   },
   {
-    english: "There is only one thing in life worse than being talked about, and that is not being talked about.",
-    french: "Il n'y a qu'une chose dans la vie pire que d'être l'objet de conversation, c'est de ne pas l'être.",
+    phrase: "We are all in the gutter, but some of us are looking at the stars.",
     source: "Oscar Wilde",
+    french: "Nous sommes tous dans le caniveau, mais certains d'entre nous regardent les étoiles.",
   },
   {
-    english: "A cynic is a man who knows the price of everything and the value of nothing.",
+    phrase: "A cynic is a man who knows the price of everything and the value of nothing.",
+    source: "Oscar Wilde",
     french: "Un cynique est un homme qui connaît le prix de tout et la valeur de rien.",
-    source: "Oscar Wilde",
   },
   {
-    english: "Always forgive your enemies; nothing annoys them so much.",
-    french: "Pardonnez toujours à vos ennemis ; rien ne les agace autant.",
+    phrase: "It is better to be beautiful than to be good.",
     source: "Oscar Wilde",
+    french: "Il vaut mieux être beau que d'être bon.",
   },
   {
-    english: "The only way to get rid of temptation is to yield to it.",
+    phrase: "The only way to get rid of temptation is to yield to it.",
+    source: "Oscar Wilde",
     french: "Le seul moyen de se débarrasser de la tentation est d'y céder.",
-    source: "Oscar Wilde",
   },
 ]

@@ -1,12 +1,12 @@
 {
-  "name": "AI Language Learning Game",
-  "short_name": "Lang Game",
-  "description": "Learn languages by matching phrases",
+  "name": "Open Source AI Language Learning Game",
+  "short_name": "Language Game",
+  "description": "Match English phrases with French translations. Learn from historical and literary sources.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#292524",
-  "theme_color": "#292524",
-  "orientation": "portrait",
+  "background_color": "#f5f5f4",
+  "theme_color": "#44403c",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icon-192.jpg",

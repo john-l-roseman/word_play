@@ -3,14 +3,14 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-import { Navigation } from "@/components/navigation"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "AI Language Learning Game",
-  description: "Learn languages by matching phrases - Built with v0 and Vercel",
+  title: "Open Source AI Language Learning Game",
+  description:
+    "Match English phrases with French translations from historical and literary sources. More fun than Duolingo!",
   generator: "v0.app",
   manifest: "/manifest.json",
   icons: {
@@ -37,8 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased bg-stone-900 text-stone-100`}>
-        <Navigation />
+      <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
