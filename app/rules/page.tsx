@@ -1,97 +1,83 @@
-import { MenuBar } from "@/components/menu-bar"
+import { DesktopNav } from "@/components/desktop-nav"
+import { MobileNav } from "@/components/mobile-nav"
+import Link from "next/link"
 
 export default function RulesPage() {
   return (
-    <div className="min-h-screen bg-stone-100">
-      <MenuBar />
-      <main className="max-w-4xl mx-auto p-6 md:p-8">
-        <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
-          <h1 className="text-3xl font-bold text-stone-900 mb-6">{"Game Rules"}</h1>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-card border-b border-border p-4 flex items-center justify-between">
+        <Link href="/" className="text-2xl md:text-3xl font-bold text-foreground hover:text-accent transition-colors">
+          Drag and Drop
+        </Link>
+        <DesktopNav />
+        <MobileNav />
+      </header>
+      <main className="flex-1 p-6 md:p-12 max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-6">Game Rules</h1>
 
-          <div className="space-y-6 text-stone-700 leading-relaxed">
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Objective"}</h2>
-              <p>
-                {
-                  "Match English phrases with their French translations by dragging cards from the left column to the corresponding drop zones on the right."
-                }
-              </p>
-            </section>
+        <div className="space-y-6 text-foreground">
+          <section>
+            <h2 className="text-2xl font-semibold mb-3">Objective</h2>
+            <p className="leading-relaxed">
+              Match English phrases with their French translations by dragging English cards from the left column to the
+              corresponding French cards in the right column.
+            </p>
+          </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"How to Play"}</h2>
-              <ol className="list-decimal list-inside space-y-2 ml-4">
-                <li>{"Each game presents 8 English phrases in the left column with their source citations."}</li>
-                <li>
-                  {"The right column contains the same phrases translated into French, but shuffled in random order."}
-                </li>
-                <li>{"Drag an English card and drop it onto the matching French translation."}</li>
-                <li>{"All phrases in each round are similar in length to prevent matching by size alone."}</li>
-              </ol>
-            </section>
+          <section>
+            <h2 className="text-2xl font-semibold mb-3">How to Play</h2>
+            <ol className="list-decimal list-inside space-y-2 leading-relaxed">
+              <li>Eight phrase pairs are displayed each game, sorted by similar length to increase difficulty</li>
+              <li>
+                Drag an English card from the left column and drop it on the matching French translation on the right
+              </li>
+              <li>On mobile, use touch gestures to drag and drop the cards</li>
+              <li>When you get close to a drop zone, you'll feel the card being pulled toward it</li>
+            </ol>
+          </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Scoring"}</h2>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>
-                  <strong>{"Correct Match:"}</strong>
-                  {" +10 points base, plus +5 points for each card in your current streak"}
-                </li>
-                <li>
-                  <strong>{"Incorrect Match:"}</strong>
-                  {" -5 points and your streak resets to 0"}
-                </li>
-                <li>{"Your total score persists across multiple games"}</li>
-              </ul>
-            </section>
+          <section>
+            <h2 className="text-2xl font-semibold mb-3">Scoring</h2>
+            <ul className="list-disc list-inside space-y-2 leading-relaxed">
+              <li>
+                <strong>Correct match:</strong> +10 points plus streak bonus
+              </li>
+              <li>
+                <strong>Streak bonus:</strong> +5 points for each consecutive correct match (builds up!)
+              </li>
+              <li>
+                <strong>Wrong match:</strong> -5 points and streak resets to 0
+              </li>
+              <li>
+                <strong>Score persists:</strong> Your score accumulates across games
+              </li>
+            </ul>
+          </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Lives"}</h2>
-              <p>
-                {
-                  "You start each round with 5 lives (shown as green dots in the header). Each incorrect match costs you one life. Lives reset when you start a new round."
-                }
-              </p>
-            </section>
+          <section>
+            <h2 className="text-2xl font-semibold mb-3">Visual & Audio Feedback</h2>
+            <ul className="list-disc list-inside space-y-2 leading-relaxed">
+              <li>
+                <strong>Correct match:</strong> Cards turn green and disappear with a pleasant "ka-ching" sound
+              </li>
+              <li>
+                <strong>Wrong match:</strong> Card flashes red and returns to its original position with a buzzer sound
+              </li>
+              <li>
+                <strong>Magnetic effect:</strong> Cards are pulled toward drop zones when nearby
+              </li>
+            </ul>
+          </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Visual & Audio Feedback"}</h2>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>
-                  <strong>{"Correct:"}</strong>
-                  {" Cards turn green, disappear with animation, and play a pleasant chime sound"}
-                </li>
-                <li>
-                  <strong>{"Incorrect:"}</strong>
-                  {" Card returns to the left column with a buzzer sound"}
-                </li>
-                <li>
-                  <strong>{"Near Drop Zone:"}</strong>
-                  {" The drop zone highlights and scales up to show magnetic attraction"}
-                </li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Phrase Sources"}</h2>
-              <p className="mb-2">{"Phrases are drawn from diverse historical and literary sources including:"}</p>
-              <p className="text-sm text-stone-600">
-                {
-                  "Quran • Bible • Talmud • US Bill of Rights • Declaration of Independence • Mao's Little Red Book • Confucius • Bhagavad Gita • Karl Marx • Vladimir Lenin • Albert Einstein • Shakespeare • Mark Twain • Winston Churchill • Oscar Wilde • and clever observations"
-                }
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-stone-800 mb-3">{"Tips"}</h2>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>{"Build your streak! Consecutive correct matches earn bonus points"}</li>
-                <li>{"Take your time - there's no time limit"}</li>
-                <li>{"Learn from mistakes - read the phrases carefully"}</li>
-                <li>{"Works on both desktop and mobile devices"}</li>
-              </ul>
-            </section>
-          </div>
+          <section>
+            <h2 className="text-2xl font-semibold mb-3">Tips</h2>
+            <ul className="list-disc list-inside space-y-2 leading-relaxed">
+              <li>All phrases in each game are similar in length, so you can't match by size alone</li>
+              <li>Build up your streak for maximum points</li>
+              <li>The game automatically starts a new round when all pairs are matched</li>
+              <li>Click "New Game" to start fresh at any time</li>
+            </ul>
+          </section>
         </div>
       </main>
     </div>

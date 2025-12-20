@@ -1,12 +1,11 @@
 {
-  "name": "Open Source AI Language Learning Game",
-  "short_name": "Language Game",
-  "description": "Match English phrases with French translations. Learn from historical and literary sources.",
+  "name": "Drag and Drop Language Game",
+  "short_name": "Drag & Drop",
+  "description": "Match English phrases with French translations",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f5f4",
-  "theme_color": "#44403c",
-  "orientation": "portrait-primary",
+  "background_color": "#F5F3F0",
+  "theme_color": "#6B5D4F",
   "icons": [
     {
       "src": "/icon-192.jpg",
