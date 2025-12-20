@@ -1,121 +1,88 @@
-import Link from "next/link"
+import { Menu } from "@/components/menu"
 
-export default function Rules() {
+export default function RulesPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b border-border p-4">
-        <div className="max-w-6xl mx-auto flex gap-6 text-lg font-medium">
-          <Link href="/" className="hover:text-primary transition-colors">
-            Home
-          </Link>
-          <Link href="/about" className="hover:text-primary transition-colors">
-            About
-          </Link>
-          <Link href="/rules" className="hover:text-primary transition-colors">
-            Rules
-          </Link>
-          <Link href="/install" className="hover:text-primary transition-colors">
-            Install on Mobile
-          </Link>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-stone-100 dark:bg-stone-900">
+      <Menu />
+      <main className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="bg-stone-50 dark:bg-stone-800 rounded-lg p-6 md:p-8 shadow-lg">
+          <h1 className="text-3xl font-bold text-stone-800 dark:text-stone-200 mb-6">Game Rules</h1>
 
-      <main className="max-w-4xl mx-auto p-6">
-        <h1 className="text-4xl font-bold mb-8 text-balance">Game Rules</h1>
+          <div className="space-y-6 text-stone-700 dark:text-stone-300">
+            <section>
+              <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">Objective</h2>
+              <p className="leading-relaxed">
+                Match English phrases with their French translations by dragging cards from the left column to the
+                correct drop zones on the right.
+              </p>
+            </section>
 
-        <div className="space-y-6 text-lg">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Objective</h2>
-            <p>
-              Match English phrases from famous texts with their correct Russian translations. Build your streak and
-              achieve the highest score!
-            </p>
-          </section>
+            <section>
+              <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">How to Play</h2>
+              <ol className="list-decimal list-inside space-y-2 leading-relaxed">
+                <li>
+                  Each round presents 8 English phrase cards on the left and 8 French translation cards on the right.
+                </li>
+                <li>Drag an English card to the French card you think is the correct translation.</li>
+                <li>The drop zone will highlight when you hover over it with a card.</li>
+                <li>Release the card to make your match attempt.</li>
+              </ol>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">How to Play</h2>
-            <ol className="list-decimal list-inside space-y-2 ml-4">
-              <li>Read the English phrase displayed at the top</li>
-              <li>Choose the correct Russian translation from four options</li>
-              <li>Click on your answer to submit</li>
-            </ol>
-          </section>
+            <section>
+              <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">Scoring System</h2>
+              <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                <li>
+                  <strong>Correct Match:</strong> +100 points + streak bonus (streak × 10 points)
+                </li>
+                <li>
+                  <strong>Wrong Match:</strong> -50 points penalty and streak resets to 0
+                </li>
+                <li>
+                  <strong>Streak Bonus:</strong> Build consecutive correct matches to earn bonus points
+                </li>
+                <li>Your score persists across game sessions</li>
+              </ul>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Scoring</h2>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                <strong>Correct Answer:</strong> +100 points base + 100 points per consecutive streak
-              </li>
-              <li>
-                <strong>Streak Bonus:</strong> Each consecutive correct answer increases your streak multiplier
-              </li>
-              <li>
-                <strong>Game Completion Bonus:</strong> 50 points per remaining mistake when you finish all 8 phrases
-              </li>
-            </ul>
-          </section>
+            <section>
+              <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">Visual & Audio Feedback</h2>
+              <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                <li>
+                  <strong>Correct Match:</strong> Cards turn green and disappear with a pleasant chime sound
+                </li>
+                <li>
+                  <strong>Wrong Match:</strong> Card flashes red, returns to original position, and plays a buzzer sound
+                </li>
+                <li>
+                  <strong>Magnetic Effect:</strong> Cards are pulled toward drop zones when nearby
+                </li>
+              </ul>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Mistakes</h2>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>You have 4 chances (mistakes allowed)</li>
-              <li>Wrong answer resets your streak to 0</li>
-              <li>Game ends when you reach 4 mistakes or complete all 8 phrases</li>
-            </ul>
-          </section>
+            <section>
+              <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">Phrase Grouping</h2>
+              <p className="leading-relaxed">
+                Phrases are grouped by character length (short, medium, long, very long). Each round only shows phrases
+                from one group, preventing you from matching by size alone and encouraging real learning.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Game Features</h2>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                <strong>Turn on Tips:</strong> Enables word-by-word translations for Russian text (resets streak to 0)
-              </li>
-              <li>
-                <strong>New Words:</strong> Loads a new set of 8 random phrases
-              </li>
-              <li>
-                <strong>Restart:</strong> Restarts the current set of 8 phrases
-              </li>
-              <li>
-                <strong>Reset Score:</strong> Clears your high score
-              </li>
-              <li>
-                <strong>High Score:</strong> Your best score is saved automatically
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Visual Feedback</h2>
-            <ul className="list-disc list-inside space-y-2 ml-4">
-              <li>
-                <strong>Green card:</strong> Correct answer
-              </li>
-              <li>
-                <strong>Red card with shake:</strong> Wrong answer
-              </li>
-              <li>
-                <strong>Dark gray:</strong> Selected card before reveal
-              </li>
-              <li>
-                <strong>Audio cues:</strong> Pleasant chime for correct, buzz for incorrect
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Phrase Sources</h2>
-            <p>Phrases are selected from diverse sources including:</p>
-            <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-              <li>Religious texts (Quran, Bible, Talmud, Bhagavad Gita)</li>
-              <li>Historical documents (US Bill of Rights, Declaration of Independence)</li>
-              <li>Philosophical works (Marx, Lenin, Confucius, Mao)</li>
-              <li>Literary classics (Shakespeare, Mark Twain, Oscar Wilde)</li>
-              <li>Famous thinkers (Einstein, Churchill)</li>
-              <li>Humorous observations</li>
-            </ul>
-          </section>
+            <section>
+              <h2 className="text-xl font-semibold text-stone-800 dark:text-stone-200 mb-3">Sources</h2>
+              <p className="leading-relaxed mb-2">
+                Phrases are drawn from diverse cultural and philosophical sources including:
+              </p>
+              <ul className="list-disc list-inside space-y-1 leading-relaxed text-sm">
+                <li>Religious texts (Quran, Bible, Talmud, Bhagavad Gita)</li>
+                <li>Historical documents (US Bill of Rights, Declaration of Independence)</li>
+                <li>Philosophical writings (Confucius, Marx, Lenin, Mao)</li>
+                <li>Literary classics (Shakespeare, Mark Twain, Oscar Wilde)</li>
+                <li>Famous quotes (Einstein, Churchill)</li>
+                <li>Humorous observations</li>
+              </ul>
+            </section>
+          </div>
         </div>
       </main>
     </div>

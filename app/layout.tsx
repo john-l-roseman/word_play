@@ -1,36 +1,36 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Open Source AI Language Learning Game",
-  description: "More fun than Duolingo, and free - Learn Russian with phrases from famous texts",
+  title: "Language Learning Game",
+  description:
+    "Open Source AI Language Learning Game - Match English phrases with French translations from diverse sources",
   generator: "v0.app",
   manifest: "/manifest.json",
-  themeColor: "#ffffff",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/icon-192.jpg",
+        sizes: "192x192",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/icon-512.jpg",
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#78716c",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 }
 
 export default function RootLayout({
@@ -40,13 +40,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2063007657687079"
-          crossOrigin="anonymous"
-        />
-      </head>
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
