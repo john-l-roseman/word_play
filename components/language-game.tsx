@@ -18,7 +18,10 @@ export function LanguageGame() {
   const [matchedIds, setMatchedIds] = useState<Set<number>>(new Set())
   const [flashState, setFlashState] = useState<{ id: number; type: "correct" | "wrong" } | null>(null)
   const [startIndex, setStartIndex] = useState(0)
+  const [touchDragging, setTouchDragging] = useState(false)
+  const [touchPosition, setTouchPosition] = useState<{ x: number; y: number } | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
+  const dropZoneRefs = useRef<Map<number, HTMLDivElement>>(new Map())
 
   const initAudioContext = useCallback(() => {
     if (!audioContextRef.current) {
@@ -117,14 +120,55 @@ export function LanguageGame() {
 
   const handleTouchStart = (e: React.TouchEvent, quote: Quote) => {
     e.preventDefault()
+    const touch = e.touches[0]
     setDraggedItem(quote)
+    setTouchDragging(true)
+    setTouchPosition({ x: touch.clientX, y: touch.clientY })
   }
 
-  const handleTouchEnd = (e: React.TouchEvent, targetQuote: Quote) => {
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!touchDragging) return
     e.preventDefault()
-    if (draggedItem) {
-      handleDrop(targetQuote)
+    const touch = e.touches[0]
+    setTouchPosition({ x: touch.clientX, y: touch.clientY })
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchDragging || !draggedItem || !touchPosition) {
+      setTouchDragging(false)
+      setDraggedItem(null)
+      setTouchPosition(null)
+      return
     }
+
+    e.preventDefault()
+
+    // Find which drop zone the touch ended on
+    const touch = e.changedTouches[0]
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+
+    // Find the drop zone by traversing up the DOM
+    let targetQuote: Quote | null = null
+    let currentElement = element
+
+    while (currentElement && currentElement !== document.body) {
+      const quoteId = currentElement.getAttribute("data-drop-id")
+      if (quoteId) {
+        const id = Number.parseInt(quoteId, 10)
+        targetQuote = gameQuotes.find((q) => q.id === id) || null
+        break
+      }
+      currentElement = currentElement.parentElement
+    }
+
+    if (targetQuote) {
+      handleDrop(targetQuote)
+    } else {
+      setDraggedItem(null)
+    }
+
+    setTouchDragging(false)
+    setTouchPosition(null)
   }
 
   const resetGame = () => {
@@ -249,8 +293,10 @@ export function LanguageGame() {
                 draggable
                 onDragStart={() => handleDragStart(quote)}
                 onTouchStart={(e) => handleTouchStart(e, quote)}
-                className={`p-2 md:p-3 bg-stone-50 border border-stone-300 rounded cursor-grab active:cursor-grabbing transition-all duration-300 select-none
-                  ${draggedItem?.id === quote.id ? "opacity-50 scale-95" : ""}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                className={`p-2 md:p-3 bg-stone-50 border border-stone-300 rounded cursor-grab active:cursor-grabbing transition-all duration-300 select-none touch-none
+                  ${draggedItem?.id === quote.id ? "opacity-50 scale-95 bg-amber-100 border-amber-400" : ""}
                   ${flashState?.id === quote.id && flashState.type === "correct" ? "bg-green-200 border-green-400" : ""}
                   ${flashState?.id === quote.id && flashState.type === "wrong" ? "bg-red-200 border-red-400" : ""}
                   hover:bg-stone-100 hover:shadow-sm`}
@@ -265,9 +311,9 @@ export function LanguageGame() {
             {remainingQuotes.map((quote) => (
               <div
                 key={quote.id}
+                data-drop-id={quote.id}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={() => handleDrop(quote)}
-                onTouchEnd={(e) => handleTouchEnd(e, quote)}
                 className={`p-2 md:p-3 bg-stone-50 border border-stone-300 rounded transition-all duration-300
                   ${flashState?.id === quote.id && flashState.type === "correct" ? "bg-green-200 border-green-400" : ""}
                   ${flashState?.id === quote.id && flashState.type === "wrong" ? "bg-red-200 border-red-400" : ""}
@@ -280,6 +326,19 @@ export function LanguageGame() {
           </div>
         </div>
       </main>
+
+      {touchDragging && draggedItem && touchPosition && (
+        <div
+          className="fixed pointer-events-none z-50 bg-amber-100 border-2 border-amber-400 rounded p-2 shadow-lg max-w-[45vw] opacity-90"
+          style={{
+            left: touchPosition.x - 80,
+            top: touchPosition.y - 30,
+            transform: "translate(0, 0)",
+          }}
+        >
+          <p className="text-xs text-stone-700 leading-tight truncate">{draggedItem.russian.substring(0, 50)}...</p>
+        </div>
+      )}
     </div>
   )
 }
