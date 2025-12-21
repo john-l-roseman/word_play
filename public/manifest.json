@@ -1,11 +1,12 @@
 {
-  "name": "Drag and Drop Language Game",
+  "name": "Language Learning Game - Russian",
   "short_name": "Drag & Drop",
-  "description": "Match English phrases with French translations",
-  "start_url": "/",
+  "description": "Learn Russian by matching English quotes with their translations",
+  "start_url": "/lang/Russian",
   "display": "standalone",
-  "background_color": "#F5F3F0",
-  "theme_color": "#6B5D4F",
+  "background_color": "#d6d3d1",
+  "theme_color": "#57534e",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/icon-192.jpg",
