@@ -2,19 +2,18 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 
 export const metadata: Metadata = {
-  title: "Russian Language Learning Game - Drag and Drop",
-  description:
-    "Learn Russian by matching famous quotes with their translations. Interactive drag-and-drop game with offline support.",
+  title: "Drag and Drop - Russian Language Game",
+  description: "Learn Russian by matching famous quotes with their translations",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Russian Game",
+    title: "Drag & Drop",
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: "#292524",
+  themeColor: "#78716c",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -26,5 +25,5 @@ export default function RussianLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return <>{children}</>
 }

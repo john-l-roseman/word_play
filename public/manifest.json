@@ -1,24 +1,21 @@
 {
-  "name": "Russian Language Learning Game",
-  "short_name": "Drag & Drop Russian",
-  "description": "Learn Russian by matching quotes with their translations",
+  "name": "Drag and Drop Language Game",
+  "short_name": "Drag & Drop",
+  "description": "Learn Russian by matching quotes",
   "start_url": "/lang/Russian",
   "display": "standalone",
   "background_color": "#f5f5f4",
-  "theme_color": "#292524",
-  "orientation": "portrait",
+  "theme_color": "#78716c",
   "icons": [
     {
-      "src": "/icon-192.jpg",
+      "src": "/icons/icon-192.jpg",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/icon-512.jpg",
+      "src": "/icons/icon-512.jpg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

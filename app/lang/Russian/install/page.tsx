@@ -1,64 +1,70 @@
+import Link from "next/link"
+import { MobileMenu } from "@/components/mobile-menu"
+
 export default function InstallPage() {
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-900">
-      <header className="bg-stone-800 text-stone-100 px-4 py-4">
-        <div className="container mx-auto">
-          <a href="/lang/Russian" className="text-xl font-bold hover:text-stone-300">
-            ← Back to Game
-          </a>
+    <div className="min-h-screen bg-stone-100 text-stone-800">
+      <header className="bg-stone-200 border-b border-stone-300 px-2 py-1">
+        <div className="flex items-center justify-between gap-2">
+          <h1 className="text-sm md:text-base font-semibold text-stone-700">Drag and Drop</h1>
+          <nav className="hidden md:flex items-center gap-4 text-sm">
+            <Link href="/lang/Russian" className="hover:text-stone-600">
+              Home
+            </Link>
+            <Link href="/lang/Russian/rules" className="hover:text-stone-600">
+              Rules
+            </Link>
+            <Link href="/lang/Russian/quotes" className="hover:text-stone-600">
+              Quotes
+            </Link>
+            <Link href="/lang/Russian/install" className="text-stone-900 font-medium">
+              Install
+            </Link>
+            <Link href="/lang/Russian/about" className="hover:text-stone-600">
+              About
+            </Link>
+            <Link href="/lang/Russian/open-source" className="hover:text-stone-600">
+              Open Source
+            </Link>
+          </nav>
+          <MobileMenu />
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
-        <h1 className="text-4xl font-bold mb-6 text-stone-800">Install on Mobile</h1>
+      <main className="max-w-2xl mx-auto p-4 md:p-8">
+        <h2 className="text-2xl font-bold text-stone-700 mb-6">Install on Mobile</h2>
 
-        <div className="bg-white rounded-lg p-6 shadow-md space-y-6">
+        <div className="space-y-8 text-stone-700">
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">iOS (Safari)</h2>
-            <ol className="list-decimal list-inside space-y-2 text-stone-700">
-              <li>Open this website in Safari browser</li>
+            <h3 className="text-lg font-semibold mb-3">📱 iOS (Safari)</h3>
+            <ol className="list-decimal list-inside space-y-2">
+              <li>Open this page in Safari</li>
               <li>Tap the Share button (square with arrow pointing up)</li>
               <li>Scroll down and tap "Add to Home Screen"</li>
-              <li>Name the app and tap "Add"</li>
+              <li>Tap "Add" in the top right corner</li>
               <li>The app icon will appear on your home screen</li>
             </ol>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Android (Chrome)</h2>
-            <ol className="list-decimal list-inside space-y-2 text-stone-700">
-              <li>Open this website in Chrome browser</li>
+            <h3 className="text-lg font-semibold mb-3">🤖 Android (Chrome)</h3>
+            <ol className="list-decimal list-inside space-y-2">
+              <li>Open this page in Chrome</li>
               <li>Tap the three-dot menu in the top right</li>
-              <li>Select "Add to Home screen" or "Install app"</li>
-              <li>Confirm by tapping "Add" or "Install"</li>
+              <li>Tap "Add to Home screen" or "Install app"</li>
+              <li>Confirm by tapping "Add"</li>
               <li>The app icon will appear on your home screen</li>
             </ol>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Benefits of Installing</h2>
-            <ul className="list-disc list-inside space-y-2 text-stone-700">
-              <li>
-                <strong>Offline Play:</strong> Play without internet connection
-              </li>
-              <li>
-                <strong>Full Screen:</strong> No browser bars for distraction-free experience
-              </li>
-              <li>
-                <strong>Quick Access:</strong> Launch directly from home screen
-              </li>
-              <li>
-                <strong>App-Like Feel:</strong> Feels like a native mobile app
-              </li>
+            <h3 className="text-lg font-semibold mb-3">✨ Benefits of Installing</h3>
+            <ul className="list-disc list-inside space-y-2">
+              <li>Full-screen experience without browser UI</li>
+              <li>Quick access from your home screen</li>
+              <li>Offline play capability (after first load)</li>
+              <li>Faster loading times</li>
             </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Note</h2>
-            <p className="text-stone-700">
-              This is a Progressive Web App (PWA) which means it works just like a regular app but doesn't need to be
-              downloaded from an app store. Once installed, it will work offline!
-            </p>
           </section>
         </div>
       </main>

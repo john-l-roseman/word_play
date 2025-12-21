@@ -1,73 +1,86 @@
+import Link from "next/link"
+import { MobileMenu } from "@/components/mobile-menu"
+
 export default function RulesPage() {
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-900">
-      <header className="bg-stone-800 text-stone-100 px-4 py-4">
-        <div className="container mx-auto">
-          <a href="/lang/Russian" className="text-xl font-bold hover:text-stone-300">
-            ← Back to Game
-          </a>
+    <div className="min-h-screen bg-stone-100 text-stone-800">
+      <header className="bg-stone-200 border-b border-stone-300 px-2 py-1">
+        <div className="flex items-center justify-between gap-2">
+          <h1 className="text-sm md:text-base font-semibold text-stone-700">Drag and Drop</h1>
+          <nav className="hidden md:flex items-center gap-4 text-sm">
+            <Link href="/lang/Russian" className="hover:text-stone-600">
+              Home
+            </Link>
+            <Link href="/lang/Russian/rules" className="text-stone-900 font-medium">
+              Rules
+            </Link>
+            <Link href="/lang/Russian/quotes" className="hover:text-stone-600">
+              Quotes
+            </Link>
+            <Link href="/lang/Russian/install" className="hover:text-stone-600">
+              Install
+            </Link>
+            <Link href="/lang/Russian/about" className="hover:text-stone-600">
+              About
+            </Link>
+            <Link href="/lang/Russian/open-source" className="hover:text-stone-600">
+              Open Source
+            </Link>
+          </nav>
+          <MobileMenu />
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
-        <h1 className="text-4xl font-bold mb-6 text-stone-800">Game Rules</h1>
+      <main className="max-w-2xl mx-auto p-4 md:p-8">
+        <h2 className="text-2xl font-bold text-stone-700 mb-6">Game Rules</h2>
 
-        <div className="bg-white rounded-lg p-6 shadow-md space-y-6">
+        <div className="space-y-6 text-stone-700">
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Objective</h2>
-            <p className="text-stone-700">
-              Match Russian translations (left column) with their corresponding English quotes (right column) by
-              dragging and dropping.
-            </p>
+            <h3 className="text-lg font-semibold mb-2">🎯 Objective</h3>
+            <p>Match Russian translations with their corresponding English quotes by dragging and dropping cards.</p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">How to Play</h2>
-            <ol className="list-decimal list-inside space-y-2 text-stone-700">
-              <li>Drag a Russian quote from the left column</li>
-              <li>Drop it onto the corresponding English quote on the right</li>
-              <li>If correct, both cards turn green and disappear</li>
-              <li>If incorrect, both cards flash red and return to their positions</li>
-              <li>Continue until all 8 pairs are matched</li>
-              <li>A new round begins automatically with 8 new quotes</li>
-            </ol>
+            <h3 className="text-lg font-semibold mb-2">🎮 How to Play</h3>
+            <ul className="list-disc list-inside space-y-2">
+              <li>Drag a Russian card from the left column</li>
+              <li>Drop it onto the matching English quote on the right</li>
+              <li>Correct matches turn green and disappear</li>
+              <li>Wrong matches flash red and return to position</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Scoring</h2>
-            <ul className="list-disc list-inside space-y-2 text-stone-700">
+            <h3 className="text-lg font-semibold mb-2">📊 Scoring</h3>
+            <ul className="list-disc list-inside space-y-2">
               <li>
-                <strong>Correct match:</strong> +10 points base
+                <strong>+10 points</strong> for each correct match
               </li>
               <li>
-                <strong>Streak bonus:</strong> Each consecutive correct match adds +5 points per streak level
+                <strong>Streak bonus:</strong> Get extra points (streak × 5) for consecutive correct matches
               </li>
               <li>
-                <strong>Incorrect match:</strong> -5 points (score never goes below 0)
+                <strong>-5 points</strong> for each wrong guess
               </li>
               <li>
-                <strong>Streak reset:</strong> Wrong answer resets your streak to 0
+                <strong>-1 life</strong> for each wrong guess
               </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Tips</h2>
-            <ul className="list-disc list-inside space-y-2 text-stone-700">
-              <li>All quotes in each round have similar lengths to prevent matching by size</li>
-              <li>Read both columns carefully before making your first match</li>
-              <li>Build streaks for maximum points</li>
-              <li>Your score accumulates across rounds</li>
-              <li>Use the Reset button to start fresh</li>
-            </ul>
+            <h3 className="text-lg font-semibold mb-2">❤️ Lives</h3>
+            <p>You start with 5 lives. Each wrong guess costs one life. Keep your hearts!</p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-3 text-stone-800">Mobile Support</h2>
-            <p className="text-stone-700">
-              The game works on both desktop (drag and drop) and mobile devices (touch). Install as a PWA for offline
-              play!
-            </p>
+            <h3 className="text-lg font-semibold mb-2">🔄 Rounds</h3>
+            <p>After matching all 8 pairs, a new round automatically starts with new quotes of similar length.</p>
+          </section>
+
+          <section>
+            <h3 className="text-lg font-semibold mb-2">📱 Mobile Tips</h3>
+            <p>On mobile devices, tap and hold a card to drag it, then release over the target card to drop.</p>
           </section>
         </div>
       </main>
