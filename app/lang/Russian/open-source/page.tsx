@@ -1,51 +1,21 @@
-import Link from "next/link"
-import { MobileMenu } from "@/components/mobile-menu"
-
 export default function OpenSourcePage() {
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-800">
-      <header className="bg-stone-200 border-b border-stone-300 px-2 py-1">
-        <div className="flex items-center justify-between gap-2">
-          <h1 className="text-sm md:text-base font-semibold text-stone-700">Drag and Drop</h1>
-          <nav className="hidden md:flex items-center gap-4 text-sm">
-            <Link href="/lang/Russian" className="hover:text-stone-600">
-              Home
-            </Link>
-            <Link href="/lang/Russian/rules" className="hover:text-stone-600">
-              Rules
-            </Link>
-            <Link href="/lang/Russian/quotes" className="hover:text-stone-600">
-              Quotes
-            </Link>
-            <Link href="/lang/Russian/install" className="hover:text-stone-600">
-              Install
-            </Link>
-            <Link href="/lang/Russian/about" className="hover:text-stone-600">
-              About
-            </Link>
-            <Link href="/lang/Russian/open-source" className="text-stone-900 font-medium">
-              Open Source
-            </Link>
-          </nav>
-          <MobileMenu />
-        </div>
-      </header>
+    <div className="max-w-2xl mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold text-stone-800 mb-6">Open Source</h1>
 
-      <main className="max-w-3xl mx-auto p-4 md:p-8">
-        <h2 className="text-2xl font-bold text-stone-700 mb-6">Open Source</h2>
+      <div className="space-y-6 text-stone-700">
+        <p>
+          This app was constructed with no coding, using only the chatbot at{" "}
+          <a href="https://v0.dev" className="text-amber-700 hover:underline">
+            https://v0.dev
+          </a>
+        </p>
 
-        <div className="bg-stone-50 p-4 md:p-6 rounded border border-stone-200">
-          <p className="text-stone-700 mb-4">
-            This app was constructed with no coding, using only the chatbot at{" "}
-            <a href="https://vercel.com" className="text-amber-700 underline">
-              https://vercel.com
-            </a>
-            .
-          </p>
+        <section>
+          <h2 className="text-lg font-semibold text-stone-800 mb-3">The Prompt</h2>
+          <p className="mb-3">Here is the prompt that was used to create the app:</p>
 
-          <p className="text-stone-700 mb-4">Here is the prompt that was used to create the app:</p>
-
-          <pre className="bg-stone-200 p-4 rounded text-xs md:text-sm overflow-x-auto whitespace-pre-wrap text-stone-700">
+          <pre className="bg-stone-100 border border-stone-300 rounded-lg p-4 text-xs overflow-x-auto whitespace-pre-wrap">
             {`Find interesting, surprising or funny short (maximum 18 words) English quotes from these sources:
 Source|Number of Quotes
 Bible|15
@@ -82,50 +52,40 @@ The corresponding Russian card contains only the translated quote, not the sourc
 
 Layout:
 To start a new game:
-1. Take eight cards | the sorted dataset.
-2. Sort all quotes by their English length and select a contiguous window of 8 adjacent quotes. This ensures all displayed quotes have nearly identical lengths, making it impossible to match by size alone.
+1. Take eight cards from the sorted dataset.
+2. Sort all quotes by their English length and select a contiguous window of 8 adjacent quotes.
 3. Two vertical columns with a gap in the middle. No column headers.
 Display both columns side-by-side on mobile with smaller cards.
-   * Left Side: A column of 8 'Draggable Cards' (Russian word cards). The Drop Zone cards should be shuffled in relation to the Draggable Cards, so the correct answer does not line up across from its English version.
-   * Right Side: A column of 8  'Drop Zone Cards' (English word cards).
-On mobile: ensure both columns are always visible side by side. Reduce the font size and eliminate blank space on the cards if necessary to fit two columns on mobile devices. 
-Store the shuffled order in state instead of re-shuffling on every render.
+   * Left Side: A column of 8 'Draggable Cards' (Russian word cards).
+   * Right Side: A column of 8 'Drop Zone Cards' (English word cards).
+On mobile: ensure both columns are always visible side by side.
 
 Interaction Visuals and Audio
-   * To determine whether a match is successful, compare quote IDs and not array indexes.
-   * If a match is successful, both the English and Russian cards should turn green for 0.3 seconds then disappear + pleasant soft ka-ching sound. 
-   * After a correct match, the matched cards will fade out, and the remaining cards will slide up to fill the gap with a smooth transition.
-   * If a match is wrong, the English and Russian cards should flash red for 0.3 seconds and go back to their places + short buzzer using Web Audio API-generated sound (a sawtooth wave that drops from 200Hz to 100Hz over 0.2 seconds)
-   * Add touch event handlers to support mobile devices.
-On mobile, provide drag-and-drop functionality by adding proper touch event handlers with visual feedback.
-After each round, start a new round with new Russian and English cards starting from a random card in the quotes dataset.
+   * If a match is successful, both cards turn green for 0.3 seconds then disappear + chime.
+   * If a match is wrong, cards flash red for 0.3 seconds + buzzer sound.
+   * After a correct match, remaining cards slide up smoothly.
+
 Give a bonus for streaks. Subtract a penalty for wrong guesses.
-Scoring accumulates from game to game. Add a Reset button to reset the score.
-Don't pop-up any windows.
-- Header: "Drag and Drop"
-
-- Menu at the top with these options (should be visible on all pages):
-      - "Rules":  Create a page based on the actual rules
-      - "Open Source": Link to contents of the attached file how-to.html. Do NOT delete anything from this file.
-      - "Install on Mobile": Create a page with instructions for install on mobile (using PWA).
-      - "About": Create a page describing Vercel and the concept of vibe coding a game. Describe the opportunity to use this site as a base for learning about AI.
-      - "Quotes": A listing of all quotes in English with their source.
-      - "Home" 
-- On mobile use hamburger menu.
-
-Put Header, Scoring, Life Bar and Menu on the same line with minimal height.
+Scoring accumulates from game to game. Add a Reset button.
 
 Muted color scheme with grays and browns.
 
-- PWA support for offline use. (manifest.json, sw.js, layout.tsx)
-- Create two PWA icons that are installed on mobile: two columns of cards with 6 cards per column.`}
+PWA support for offline use with manifest.json and service worker.`}
           </pre>
+        </section>
 
-          <p className="text-stone-600 mt-4 text-sm">
-            You can easily fork the project by editing the prompt, for example to modify the list of sources.
-          </p>
-        </div>
-      </main>
+        <section>
+          <h2 className="text-lg font-semibold text-stone-800 mb-3">Fork This Project</h2>
+          <p>You can easily fork the project by editing the prompt. For example, you could:</p>
+          <ul className="list-disc list-inside space-y-1 ml-2 mt-2">
+            <li>Modify the list of quote sources</li>
+            <li>Change the target language from Russian to another language</li>
+            <li>Add more quotes or different categories</li>
+            <li>Adjust the color scheme or visual design</li>
+            <li>Add new game mechanics or features</li>
+          </ul>
+        </section>
+      </div>
     </div>
   )
 }

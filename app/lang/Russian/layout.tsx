@@ -1,14 +1,17 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
+import { GameHeader } from "@/components/game/game-header"
+import { PWARegister } from "@/components/pwa-register"
 
 export const metadata: Metadata = {
-  title: "Drag and Drop - Russian Language Game",
-  description: "Learn Russian by matching famous quotes with their translations",
+  title: "Russian Language Learning Game - Drag and Drop",
+  description:
+    "Learn Russian by matching famous quotes with their translations. A fun drag-and-drop language learning game.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Drag & Drop",
+    title: "Learn Russian",
   },
 }
 
@@ -25,5 +28,11 @@ export default function RussianLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <div className="min-h-screen bg-stone-50">
+      <PWARegister />
+      <GameHeader />
+      <main className="py-4">{children}</main>
+    </div>
+  )
 }

@@ -1,80 +1,70 @@
-import Link from "next/link"
-import { MobileMenu } from "@/components/mobile-menu"
-
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-stone-100 text-stone-800">
-      <header className="bg-stone-200 border-b border-stone-300 px-2 py-1">
-        <div className="flex items-center justify-between gap-2">
-          <h1 className="text-sm md:text-base font-semibold text-stone-700">Drag and Drop</h1>
-          <nav className="hidden md:flex items-center gap-4 text-sm">
-            <Link href="/lang/Russian" className="hover:text-stone-600">
-              Home
-            </Link>
-            <Link href="/lang/Russian/rules" className="hover:text-stone-600">
-              Rules
-            </Link>
-            <Link href="/lang/Russian/quotes" className="hover:text-stone-600">
-              Quotes
-            </Link>
-            <Link href="/lang/Russian/install" className="hover:text-stone-600">
-              Install
-            </Link>
-            <Link href="/lang/Russian/about" className="text-stone-900 font-medium">
-              About
-            </Link>
-            <Link href="/lang/Russian/open-source" className="hover:text-stone-600">
-              Open Source
-            </Link>
-          </nav>
-          <MobileMenu />
-        </div>
-      </header>
+    <div className="max-w-2xl mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold text-stone-800 mb-6">About This Game</h1>
 
-      <main className="max-w-2xl mx-auto p-4 md:p-8">
-        <h2 className="text-2xl font-bold text-stone-700 mb-6">About This Game</h2>
+      <div className="space-y-6 text-stone-700">
+        <section>
+          <h2 className="text-lg font-semibold text-stone-800 mb-2">Built with Vercel v0</h2>
+          <p className="mb-3">
+            This language learning game was created using <strong>Vercel v0</strong>, an AI-powered development platform
+            that transforms natural language prompts into fully functional web applications.
+          </p>
+          <p>
+            Vercel is a cloud platform for frontend frameworks and static sites, built to integrate with headless
+            content, commerce, or database. It provides an exceptional developer experience with features like automatic
+            deployments, serverless functions, and edge caching.
+          </p>
+        </section>
 
-        <div className="space-y-6 text-stone-700">
-          <section>
-            <h3 className="text-lg font-semibold mb-2">🚀 Powered by Vercel</h3>
-            <p>
-              This application is built and deployed on <strong>Vercel</strong>, a cloud platform for static sites and
-              serverless functions. Vercel enables developers to deploy websites and web services instantly, with
-              automatic scaling and zero configuration.
-            </p>
-          </section>
+        <section>
+          <h2 className="text-lg font-semibold text-stone-800 mb-2">What is Vibe Coding?</h2>
+          <p className="mb-3">
+            <strong>Vibe coding</strong> is a new paradigm where developers describe what they want to build in natural
+            language, and AI translates these descriptions into working code. Instead of writing every line manually,
+            you collaborate with AI to bring your ideas to life.
+          </p>
+          <p>
+            This approach democratizes software development, allowing people with varying levels of technical expertise
+            to create sophisticated applications while learning programming concepts along the way.
+          </p>
+        </section>
 
-          <section>
-            <h3 className="text-lg font-semibold mb-2">🎨 Vibe Coding</h3>
-            <p>
-              This game was created using <strong>vibe coding</strong> — a revolutionary approach to software
-              development where you describe what you want in natural language, and AI transforms your vision into
-              working code. No traditional programming required!
-            </p>
-          </section>
+        <section>
+          <h2 className="text-lg font-semibold text-stone-800 mb-2">Learning Opportunity</h2>
+          <p className="mb-3">
+            This game serves as an excellent starting point for learning about AI-assisted development:
+          </p>
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li>Study the source code to understand React and Next.js patterns</li>
+            <li>Modify the quote dataset to create your own language learning game</li>
+            <li>Experiment with the prompts to see how AI interprets different instructions</li>
+            <li>Add new features like additional languages, difficulty levels, or game modes</li>
+            <li>Learn about Progressive Web Apps (PWAs) and offline functionality</li>
+          </ul>
+        </section>
 
-          <section>
-            <h3 className="text-lg font-semibold mb-2">🤖 Learn About AI</h3>
-            <p>
-              This project serves as a practical example of AI-assisted development. You can use it as a foundation to:
-            </p>
-            <ul className="list-disc list-inside mt-2 space-y-1">
-              <li>Understand how AI can generate functional applications</li>
-              <li>Learn about modern web technologies (React, Next.js, TypeScript)</li>
-              <li>Experiment with modifying prompts to create your own variations</li>
-              <li>Explore the intersection of natural language and code</li>
-            </ul>
-          </section>
-
-          <section>
-            <h3 className="text-lg font-semibold mb-2">📚 Educational Value</h3>
-            <p>
-              Beyond language learning, this game demonstrates how AI can democratize software development. Anyone with
-              a clear idea can now create functional applications without years of programming training.
-            </p>
-          </section>
-        </div>
-      </main>
+        <section>
+          <h2 className="text-lg font-semibold text-stone-800 mb-2">Technology Stack</h2>
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li>
+              <strong>Next.js</strong> - React framework for production
+            </li>
+            <li>
+              <strong>Tailwind CSS</strong> - Utility-first CSS framework
+            </li>
+            <li>
+              <strong>Web Audio API</strong> - Sound effects for feedback
+            </li>
+            <li>
+              <strong>PWA</strong> - Install on mobile for offline use
+            </li>
+            <li>
+              <strong>TypeScript</strong> - Type-safe JavaScript
+            </li>
+          </ul>
+        </section>
+      </div>
     </div>
   )
 }
