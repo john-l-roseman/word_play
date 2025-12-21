@@ -6,318 +6,278 @@ import { useState, useEffect, useRef } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
-import Link from "next/link"
-import { quotes } from "./quotes-data"
+import { quotes } from "@/lib/quotes-data"
 
-interface Quote {
+type Quote = {
   id: number
-  english: string
+  text: string
   russian: string
   source: string
 }
 
-export default function LanguageGamePage() {
-  const [currentQuotes, setCurrentQuotes] = useState<Quote[]>([])
+type MatchState = {
+  id: number
+  state: "correct" | "incorrect" | null
+}
+
+export default function RussianGamePage() {
+  const [gameQuotes, setGameQuotes] = useState<Quote[]>([])
   const [russianOrder, setRussianOrder] = useState<number[]>([])
   const [draggedId, setDraggedId] = useState<number | null>(null)
+  const [matchStates, setMatchStates] = useState<Map<number, MatchState>>(new Map())
   const [matchedIds, setMatchedIds] = useState<Set<number>>(new Set())
-  const [flashingGreen, setFlashingGreen] = useState<Set<number>>(new Set())
-  const [flashingRed, setFlashingRed] = useState<Set<number>>(new Set())
   const [score, setScore] = useState(0)
   const [streak, setStreak] = useState(0)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const audioContextRef = useRef<AudioContext | null>(null)
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
+    initializeGame()
+    // Initialize audio context on user interaction
+    const initAudio = () => {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new AudioContext()
+      }
+    }
+    document.addEventListener("click", initAudio, { once: true })
+    return () => document.removeEventListener("click", initAudio)
   }, [])
 
-  useEffect(() => {
-    loadNewRound()
-    const storedScore = localStorage.getItem("languageGameScore")
-    if (storedScore) setScore(Number.parseInt(storedScore))
-  }, [])
+  const initializeGame = () => {
+    const sortedQuotes = [...quotes].sort((a, b) => a.text.length - b.text.length)
+    const startIdx = Math.floor(Math.random() * Math.max(0, sortedQuotes.length - 8))
+    const selectedQuotes = sortedQuotes.slice(startIdx, startIdx + 8)
 
-  const loadNewRound = () => {
-    const cardCount = isMobile ? 5 : 8
-
-    // Sort quotes by English text length
-    const sortedQuotes = [...quotes].sort((a, b) => a.english.length - b.english.length)
-
-    // Pick a random starting point
-    const maxStart = sortedQuotes.length - cardCount
-    const randomStart = Math.floor(Math.random() * maxStart)
-
-    // Get a contiguous window of quotes with similar lengths
-    const selectedQuotes = sortedQuotes.slice(randomStart, randomStart + cardCount)
-
-    // Shuffle Russian order
-    const shuffledIndices = selectedQuotes.map((_, i) => i).sort(() => Math.random() - 0.5)
-
-    setCurrentQuotes(selectedQuotes)
-    setRussianOrder(shuffledIndices)
+    setGameQuotes(selectedQuotes)
+    const shuffled = [...selectedQuotes.map((q) => q.id)].sort(() => Math.random() - 0.5)
+    setRussianOrder(shuffled)
     setMatchedIds(new Set())
+    setMatchStates(new Map())
   }
 
-  const playSuccessSound = () => {
-    if (!audioContextRef.current) {
-      audioContextRef.current = new AudioContext()
-    }
+  const playSuccess = () => {
+    if (!audioContextRef.current) return
     const ctx = audioContextRef.current
-    const oscillator = ctx.createOscillator()
-    const gainNode = ctx.createGain()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
 
-    oscillator.connect(gainNode)
-    gainNode.connect(ctx.destination)
+    osc.connect(gain)
+    gain.connect(ctx.destination)
 
-    oscillator.frequency.value = 800
-    oscillator.type = "sine"
+    osc.frequency.value = 800
+    gain.gain.value = 0.1
 
-    gainNode.gain.setValueAtTime(0.3, ctx.currentTime)
-    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3)
-
-    oscillator.start(ctx.currentTime)
-    oscillator.stop(ctx.currentTime + 0.3)
+    osc.start(ctx.currentTime)
+    osc.stop(ctx.currentTime + 0.1)
   }
 
-  const playErrorSound = () => {
-    if (!audioContextRef.current) {
-      audioContextRef.current = new AudioContext()
-    }
+  const playError = () => {
+    if (!audioContextRef.current) return
     const ctx = audioContextRef.current
-    const oscillator = ctx.createOscillator()
-    const gainNode = ctx.createGain()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
 
-    oscillator.connect(gainNode)
-    gainNode.connect(ctx.destination)
+    osc.type = "sawtooth"
+    osc.connect(gain)
+    gain.connect(ctx.destination)
 
-    oscillator.frequency.setValueAtTime(200, ctx.currentTime)
-    oscillator.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.2)
-    oscillator.type = "sawtooth"
+    osc.frequency.setValueAtTime(200, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.2)
+    gain.gain.value = 0.1
 
-    gainNode.gain.setValueAtTime(0.2, ctx.currentTime)
-    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2)
-
-    oscillator.start(ctx.currentTime)
-    oscillator.stop(ctx.currentTime + 0.2)
+    osc.start(ctx.currentTime)
+    osc.stop(ctx.currentTime + 0.2)
   }
 
-  const handleDragStart = (e: React.DragEvent | React.TouchEvent, id: number) => {
+  const handleDragStart = (e: React.DragEvent, id: number) => {
     setDraggedId(id)
-    if ("dataTransfer" in e) {
-      e.dataTransfer.effectAllowed = "move"
-    }
+    e.dataTransfer.effectAllowed = "move"
   }
 
-  const handleDrop = (e: React.DragEvent | React.TouchEvent, targetId: number) => {
+  const handleTouchStart = (id: number) => {
+    setDraggedId(id)
+  }
+
+  const handleDrop = (e: React.DragEvent, targetId: number) => {
     e.preventDefault()
+    if (draggedId === null || matchedIds.has(draggedId) || matchedIds.has(targetId)) return
 
-    if (draggedId === null) return
-
-    // Compare IDs to check match
-    if (draggedId === targetId) {
-      // Correct match
-      playSuccessSound()
-      setFlashingGreen(new Set([draggedId]))
-
-      setTimeout(() => {
-        setMatchedIds((prev) => new Set([...prev, draggedId]))
-        setFlashingGreen(new Set())
-
-        const newStreak = streak + 1
-        setStreak(newStreak)
-        const newScore = score + 10 + (newStreak > 1 ? newStreak * 2 : 0)
-        setScore(newScore)
-        localStorage.setItem("languageGameScore", newScore.toString())
-
-        // Check if round is complete
-        if (matchedIds.size + 1 === currentQuotes.length) {
-          setTimeout(() => loadNewRound(), 500)
-        }
-      }, 300)
-    } else {
-      // Wrong match
-      playErrorSound()
-      setFlashingRed(new Set([draggedId, targetId]))
-      setStreak(0)
-      const newScore = Math.max(0, score - 5)
-      setScore(newScore)
-      localStorage.setItem("languageGameScore", newScore.toString())
-
-      setTimeout(() => {
-        setFlashingRed(new Set())
-      }, 300)
-    }
-
+    checkMatch(draggedId, targetId)
     setDraggedId(null)
   }
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (draggedId === null) return
+  const handleTouchEnd = (targetId: number) => {
+    if (draggedId === null || matchedIds.has(draggedId) || matchedIds.has(targetId)) return
 
-    const touch = e.touches[0]
-    const element = document.elementFromPoint(touch.clientX, touch.clientY)
-
-    if (element && element.hasAttribute("data-drop-id")) {
-      const dropId = Number.parseInt(element.getAttribute("data-drop-id")!)
-      // Highlight potential drop zone
-    }
+    checkMatch(draggedId, targetId)
+    setDraggedId(null)
   }
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (draggedId === null) return
+  const checkMatch = (russianId: number, englishId: number) => {
+    const isCorrect = russianId === englishId
 
-    const touch = e.changedTouches[0]
-    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    const newMatchStates = new Map(matchStates)
+    newMatchStates.set(russianId, { id: russianId, state: isCorrect ? "correct" : "incorrect" })
+    newMatchStates.set(englishId, { id: englishId, state: isCorrect ? "correct" : "incorrect" })
+    setMatchStates(newMatchStates)
 
-    if (element && element.hasAttribute("data-drop-id")) {
-      const dropId = Number.parseInt(element.getAttribute("data-drop-id")!)
-      handleDrop(e, dropId)
+    if (isCorrect) {
+      playSuccess()
+      const newStreak = streak + 1
+      setStreak(newStreak)
+      const points = 10 + (newStreak > 1 ? newStreak * 5 : 0)
+      setScore(score + points)
+
+      setTimeout(() => {
+        setMatchedIds((prev) => new Set([...prev, russianId]))
+        setMatchStates(new Map())
+
+        if (matchedIds.size + 1 === gameQuotes.length) {
+          setTimeout(() => initializeGame(), 500)
+        }
+      }, 300)
     } else {
-      setDraggedId(null)
+      playError()
+      setStreak(0)
+      setScore(Math.max(0, score - 5))
+
+      setTimeout(() => {
+        setMatchStates(new Map())
+      }, 300)
     }
   }
 
   const resetScore = () => {
     setScore(0)
     setStreak(0)
-    localStorage.setItem("languageGameScore", "0")
+    initializeGame()
   }
 
-  const visibleQuotes = currentQuotes.filter((q) => !matchedIds.has(q.id))
+  const getRussianQuote = (id: number) => gameQuotes.find((q) => q.id === id)
+  const getEnglishQuote = (id: number) => gameQuotes.find((q) => q.id === id)
+
+  const getCardClass = (id: number) => {
+    const matchState = matchStates.get(id)
+    if (matchState?.state === "correct") return "bg-green-600 text-white"
+    if (matchState?.state === "incorrect") return "bg-red-600 text-white"
+    if (matchedIds.has(id)) return "opacity-0"
+    return "bg-stone-200 text-stone-900 hover:bg-stone-300"
+  }
 
   return (
     <div className="min-h-screen bg-stone-100 text-stone-900">
-      {/* Header Bar */}
-      <div className="bg-stone-700 text-stone-100 px-4 py-2 flex items-center justify-between gap-4">
-        <h1 className="text-lg font-bold whitespace-nowrap">Drag and Drop</h1>
+      {/* Header */}
+      <header className="bg-stone-800 text-stone-100 px-4 py-2">
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-lg font-bold">Drag and Drop</h1>
 
-        <div className="flex items-center gap-4 text-sm">
-          <div className="whitespace-nowrap">Score: {score}</div>
-          <div className="whitespace-nowrap">Streak: {streak}</div>
-          <Button
-            onClick={resetScore}
-            size="sm"
-            variant="outline"
-            className="h-7 text-xs bg-stone-600 border-stone-500 hover:bg-stone-500"
-          >
-            Reset
-          </Button>
-        </div>
-
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-4 text-sm">
-          <Link href="/lang/Russian/rules" className="hover:text-stone-300">
-            Rules
-          </Link>
-          <Link href="/lang/Russian/open-source" className="hover:text-stone-300">
-            Open Source
-          </Link>
-          <Link href="/lang/Russian/install" className="hover:text-stone-300">
-            Install
-          </Link>
-          <Link href="/lang/Russian/about" className="hover:text-stone-300">
-            About
-          </Link>
-          <Link href="/lang/Russian/quotes" className="hover:text-stone-300">
-            Quotes
-          </Link>
-          <Link href="/lang/Russian" className="hover:text-stone-300">
-            Home
-          </Link>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button className="md:hidden p-1" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-stone-600 text-stone-100 px-4 py-3 flex flex-col gap-2">
-          <Link href="/lang/Russian/rules" className="hover:text-stone-300 py-1">
-            Rules
-          </Link>
-          <Link href="/lang/Russian/open-source" className="hover:text-stone-300 py-1">
-            Open Source
-          </Link>
-          <Link href="/lang/Russian/install" className="hover:text-stone-300 py-1">
-            Install on Mobile
-          </Link>
-          <Link href="/lang/Russian/about" className="hover:text-stone-300 py-1">
-            About
-          </Link>
-          <Link href="/lang/Russian/quotes" className="hover:text-stone-300 py-1">
-            Quotes
-          </Link>
-          <Link href="/lang/Russian" className="hover:text-stone-300 py-1">
-            Home
-          </Link>
-        </div>
-      )}
-
-      {/* Game Area */}
-      <div className="container mx-auto px-2 md:px-4 py-4 md:py-8">
-        <div className="grid grid-cols-2 gap-2 md:gap-8 max-w-6xl mx-auto">
-          {/* English Column */}
-          <div className="space-y-2">
-            {visibleQuotes.map((quote) => (
-              <Card
-                key={`en-${quote.id}`}
-                draggable
-                onDragStart={(e) => handleDragStart(e, quote.id)}
-                onTouchStart={(e) => handleDragStart(e, quote.id)}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                className={`p-2 md:p-4 cursor-move transition-all duration-300 border-2 ${
-                  flashingGreen.has(quote.id)
-                    ? "bg-green-400 border-green-600"
-                    : flashingRed.has(quote.id)
-                      ? "bg-red-400 border-red-600"
-                      : "bg-stone-50 border-stone-300 hover:border-stone-400"
-                } ${matchedIds.has(quote.id) ? "opacity-0" : "opacity-100"}`}
-              >
-                <div className="text-xs md:text-sm leading-tight">
-                  {quote.english}
-                  <br />
-                  <em className="text-stone-600">-- {quote.source}</em>
-                </div>
-              </Card>
-            ))}
+          <div className="flex items-center gap-4 text-sm">
+            <span>Score: {score}</span>
+            <span>Streak: {streak}</span>
+            <Button onClick={resetScore} variant="secondary" size="sm" className="h-7 px-2 text-xs">
+              Reset
+            </Button>
           </div>
 
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-3 text-sm">
+            <a href="/lang/Russian" className="hover:text-stone-300">
+              Home
+            </a>
+            <a href="/lang/Russian/rules" className="hover:text-stone-300">
+              Rules
+            </a>
+            <a href="/lang/Russian/quotes" className="hover:text-stone-300">
+              Quotes
+            </a>
+            <a href="/lang/Russian/open-source" className="hover:text-stone-300">
+              Open Source
+            </a>
+            <a href="/lang/Russian/install" className="hover:text-stone-300">
+              Install on Mobile
+            </a>
+            <a href="/lang/Russian/about" className="hover:text-stone-300">
+              About
+            </a>
+          </nav>
+
+          {/* Mobile Menu Toggle */}
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden">
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden flex flex-col gap-2 mt-4 pb-2">
+            <a href="/lang/Russian" className="text-lg hover:text-stone-300">
+              Home
+            </a>
+            <a href="/lang/Russian/rules" className="text-lg hover:text-stone-300">
+              Rules
+            </a>
+            <a href="/lang/Russian/quotes" className="text-lg hover:text-stone-300">
+              Quotes
+            </a>
+            <a href="/lang/Russian/open-source" className="text-lg hover:text-stone-300">
+              Open Source
+            </a>
+            <a href="/lang/Russian/install" className="text-lg hover:text-stone-300">
+              Install on Mobile
+            </a>
+            <a href="/lang/Russian/about" className="text-lg hover:text-stone-300">
+              About
+            </a>
+          </nav>
+        )}
+      </header>
+
+      {/* Game Board */}
+      <main className="container mx-auto px-2 py-4 md:px-4 md:py-8">
+        <div className="grid grid-cols-2 gap-2 md:gap-6 max-w-6xl mx-auto">
           {/* Russian Column */}
-          <div className="space-y-2">
-            {russianOrder.map((index) => {
-              const quote = currentQuotes[index]
-              if (!quote || matchedIds.has(quote.id)) return null
+          <div className="flex flex-col gap-2">
+            {russianOrder.map((id) => {
+              const quote = getRussianQuote(id)
+              if (!quote || matchedIds.has(id)) return null
 
               return (
                 <Card
-                  key={`ru-${quote.id}`}
-                  data-drop-id={quote.id}
+                  key={`russian-${id}`}
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, id)}
+                  onTouchStart={() => handleTouchStart(id)}
+                  className={`p-2 md:p-4 cursor-move transition-all duration-300 ${getCardClass(id)} text-xs md:text-base`}
+                >
+                  {quote.russian}
+                </Card>
+              )
+            })}
+          </div>
+
+          {/* English Column */}
+          <div className="flex flex-col gap-2">
+            {gameQuotes.map((quote) => {
+              if (matchedIds.has(quote.id)) return null
+
+              return (
+                <Card
+                  key={`english-${quote.id}`}
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => handleDrop(e, quote.id)}
-                  className={`p-2 md:p-4 transition-all duration-300 border-2 ${
-                    flashingGreen.has(quote.id)
-                      ? "bg-green-400 border-green-600"
-                      : flashingRed.has(quote.id)
-                        ? "bg-red-400 border-red-600"
-                        : "bg-stone-50 border-stone-300"
-                  } ${matchedIds.has(quote.id) ? "opacity-0" : "opacity-100"}`}
+                  onTouchEnd={() => handleTouchEnd(quote.id)}
+                  className={`p-2 md:p-4 transition-all duration-300 ${getCardClass(quote.id)} text-xs md:text-base`}
                 >
-                  <div className="text-xs md:text-sm leading-tight">{quote.russian}</div>
+                  <div>
+                    {quote.text}
+                    <div className="mt-1 italic text-stone-600">-- {quote.source}</div>
+                  </div>
                 </Card>
               )
             })}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
